@@ -1,0 +1,34 @@
+{
+    "name": "Menues Inputs",
+    "maps": [
+        {
+            "name": "Game",
+            "id": "a0527421-0443-4a75-b471-708608a43f9b",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "1bc1098c-4b19-4792-9b9c-cfbc04f3612a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7b1ca493-ceec-41b2-882f-2b4fc44a93e8",
+                    "path": "<Keyboard>/p",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
