@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets._Main.Scripts;
+using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using Utilities;
@@ -15,6 +16,7 @@ namespace _Main.Scripts.Gun
         public int CurrentAmmo => _currentAmmo;
         private int _currentAmmoInChamber;
         public int CurrentAmmoInChamber => _currentAmmoInChamber;
+        [SerializeField]protected CinemachineImpulseSource Source;
 
         [SerializeField]private ParticleSystem shootParticles;
 
@@ -107,6 +109,7 @@ namespace _Main.Scripts.Gun
             var newProj = _bulletSpawner.SpawnObject(attackPoint);
            var bullet = newProj.GetComponent<Bullet>();
             shootParticles?.Play();
+            Source.GenerateImpulse();
             bullet.InitializeStats(baseStats.BulletSpeed,baseStats.Damage,baseStats.Range,baseStats.ContactLayers,attackPoint.forward,owner);
             MakeSound();
         }

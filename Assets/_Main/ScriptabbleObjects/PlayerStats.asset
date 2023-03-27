@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxLife>k__BackingField: 100
   <MaxSpeed>k__BackingField: 10
-  <DashTime>k__BackingField: 0.3
+  <DashTime>k__BackingField: 0.04
   <DashSpeed>k__BackingField: 0
   <DashCooldown>k__BackingField: 0

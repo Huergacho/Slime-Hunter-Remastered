@@ -17,7 +17,7 @@ MonoBehaviour:
   Range: 5
   ContactLayers:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 5632
   <Sound>k__BackingField: {fileID: 0}
   bulletSpeed: 30
   bulletToSpawn: {fileID: 11400000, guid: cc8f8709973c1bf4aa7b311b37a534fb, type: 2}

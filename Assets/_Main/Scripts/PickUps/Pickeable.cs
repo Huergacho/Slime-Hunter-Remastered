@@ -12,7 +12,6 @@ namespace _Main.Scripts.PickUps
         [SerializeField] protected PickupStats stats;
         private Coroutine disapearRoutine;
         protected SpriteRenderer _spriteRenderer;
-
         protected virtual void Awake()
         {
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -20,7 +19,7 @@ namespace _Main.Scripts.PickUps
 
         protected virtual void Start()
         {
-            if (disapearRoutine == null)
+            if (disapearRoutine == null && stats.canDisappear)
             {
                 disapearRoutine = StartCoroutine(Disappear());
             }

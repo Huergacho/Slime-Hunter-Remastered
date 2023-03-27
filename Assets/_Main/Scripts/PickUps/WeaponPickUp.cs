@@ -7,17 +7,17 @@ namespace _Main.Scripts.PickUps
     {
         [SerializeField] private GameObject prefabToInstance;
         private MonoBehaviour _model;
-
+        private MeshFilter _filter;
         protected override void Awake()
         {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _filter = GetComponent<MeshFilter>();
         }
 
         protected override void Start()
         {
-            if (_spriteRenderer != null)
+            if (_filter != null)
             {
-                _spriteRenderer.sprite = prefabToInstance.GetComponentInChildren<SpriteRenderer>().sprite;
+                _filter.mesh = prefabToInstance.GetComponentInChildren<MeshFilter>().sharedMesh;
             }
             base.Start();
 
