@@ -26,7 +26,7 @@ namespace _Main.Scripts.PickUps
             }
         }
 
-        private void OnTriggerStay2D(Collider2D other)
+        private void OnTriggerStay(Collider other)
         {
             if (GameUtilities.IsGoInLayerMask(other.gameObject, stats.contactLayer))
             {

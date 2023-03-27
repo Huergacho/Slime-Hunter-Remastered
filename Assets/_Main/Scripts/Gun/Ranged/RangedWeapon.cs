@@ -16,6 +16,8 @@ namespace _Main.Scripts.Gun
         private int _currentAmmoInChamber;
         public int CurrentAmmoInChamber => _currentAmmoInChamber;
 
+        [SerializeField]private ParticleSystem shootParticles;
+
         // [SerializeField] private string bulletToSpawn = "bullet";
 
         private void Awake()
@@ -104,6 +106,7 @@ namespace _Main.Scripts.Gun
             }
             var newProj = _bulletSpawner.SpawnObject(attackPoint);
            var bullet = newProj.GetComponent<Bullet>();
+            shootParticles?.Play();
             bullet.InitializeStats(baseStats.BulletSpeed,baseStats.Damage,baseStats.Range,baseStats.ContactLayers,attackPoint.forward,owner);
             MakeSound();
         }

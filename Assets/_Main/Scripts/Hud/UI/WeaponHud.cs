@@ -10,10 +10,12 @@ namespace _Main.Scripts.Hud.UI
         [SerializeField] private TextMeshProUGUI ammoText;
         //   [SerializeField] private Image gunImage;
         [SerializeField] private Color[] ammoColor;
+        [SerializeField]private WeaponHandler currentHandler;
         private RangedWeapon currWeaponToCheck;
         private bool canUpdate;
         private void Start()
         {
+            currentHandler.OnWeaponChange += UpdateCurrentGun;
             CheckForRangedWeapon(currWeaponToCheck);
         }
 

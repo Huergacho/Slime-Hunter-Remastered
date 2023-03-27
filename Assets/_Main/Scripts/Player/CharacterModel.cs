@@ -11,11 +11,6 @@ namespace Assets._Main.Scripts.Characters.Player
 {
     [RequireComponent(typeof(WeaponHandler), typeof(LifeController), typeof(CharacterView))]
     [RequireComponent(typeof(Rigidbody))]
-    public static class Helpers 
-    {
-        private static Matrix4x4 _isoMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
-        public static Vector3 ToIso(Vector3 input) => _isoMatrix.MultiplyPoint3x4(input);
-    }
     public class CharacterModel : MonoBehaviour
     {
 
@@ -76,7 +71,7 @@ namespace Assets._Main.Scripts.Characters.Player
             }
             else
             {
-                _rb.velocity = dir.normalized + Helpers.ToIso(dir.normalized) * desiredSpeed;
+                _rb.velocity = dir.normalized + GameUtilities.ToIso(dir.normalized) * desiredSpeed;
             }
             _view.MoveAnimation(_rb.velocity.normalized.magnitude);
         }
@@ -123,9 +118,9 @@ namespace Assets._Main.Scripts.Characters.Player
         public void RotateTowardMouse()
         {
             var mousePos = GameUtilities.GetMouseWorldPosition(_camera, layersToLook);
+            mouseIndicator.transform.position = mousePos;
             mousePos.y = transform.position.y;
             transform.LookAt(mousePos);
-            mouseIndicator.transform.position = mousePos;
         }
         private void DieActions()
         {

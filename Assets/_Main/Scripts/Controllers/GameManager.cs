@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public AudioManager AudioManager { get; private set; }
     public bool IsPaused { get; private set;}
     public event Action<bool> OnPaused;
-    public HudManager HudManager;
     private void Awake()
     {
         if (Instance == null)

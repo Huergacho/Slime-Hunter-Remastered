@@ -16,11 +16,10 @@ public class Bullet : MonoBehaviour,IPooleable
     [SerializeField]private float _lifeSpan = 3;
     private GameObject _owner;
     [SerializeField]private TrailRenderer bulletTrail;
-    private ParticleSystem _bulletParticle;
+    [SerializeField]private PoolObject bulletParticle;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _bulletParticle = GetComponent<ParticleSystem>();
     }
 
     public void InitializeStats(float bulletSpeed, int damage, float lifeSpan, LayerMask layerMask, Vector3 firePoint,
@@ -31,13 +30,8 @@ public class Bullet : MonoBehaviour,IPooleable
         _lifeSpan = lifeSpan;
         _contactLayers = layerMask;
         _owner = owner;
-        transform.right = firePoint;
+        transform.forward = firePoint;
     }
-
-    private void Start()
-    {
-    }
-
     private void Update()
     {
         Move();
@@ -58,25 +52,10 @@ public class Bullet : MonoBehaviour,IPooleable
 
     protected virtual void Explode()
     {
-        _bulletParticle.Play();
+        GenericPool.Instance.SpawnFromPool(bulletParticle,transform.position,transform.rotation);
         bulletTrail.emitting = false;
-        // gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
-
-    // private async void LifeSpanCounter()
-    // {
-    //     if (gameObject == null)
-    //     {
-    //         return;
-    //     }
-    //     var  a = Task.Delay(TimeSpan.FromSeconds(_lifeSpan));
-    //     await a;
-    //     a.Dispose();
-    //     if (gameObject != null)
-    //     {
-    //         gameObject.SetActive(false);
-    //     }
-    // }
     private IEnumerator LifeSpanCounter()
     {
         yield return new WaitForSeconds(_lifeSpan);
@@ -85,7 +64,7 @@ public class Bullet : MonoBehaviour,IPooleable
 
     protected virtual void Move()
     {
-        _rb.velocity = transform.right * _bulletSpeed;
+        _rb.velocity = transform.forward * _bulletSpeed;
     }
 
     public void OnObjectSpawn()

@@ -33,5 +33,15 @@ namespace Utilities
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(position, range * 2);
         }
+
+        #region Isometric Conversion
+
+        private static Matrix4x4 _isoMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
+        
+        //Invoke this and replace every movement vector 
+        public static Vector3 ToIso(Vector3 input) => _isoMatrix.MultiplyPoint3x4(input);
+        
+
+        #endregion
     }
 }

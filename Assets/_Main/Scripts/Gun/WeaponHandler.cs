@@ -15,9 +15,7 @@ namespace _Main.Scripts.Gun
         private Weapon holdedWeapon;
 
         private Transform _anchorPoint;
-
-        [SerializeField] private WeaponHud Hud;
-
+        public event Action<Weapon> OnWeaponChange;
         public void Initialize(Transform anchorPoint)
         {
             _anchorPoint = anchorPoint;
@@ -37,18 +35,10 @@ namespace _Main.Scripts.Gun
                 currentWeapon.LeftDown();
             }
             currentWeapon = holdedWeapon;
+            OnWeaponChange?.Invoke(currentWeapon);
             currentWeapon.transform.SetParent(_anchorPoint);
             currentWeapon.transform.SetPositionAndRotation(_anchorPoint.position,_anchorPoint.rotation);
-            UiManage();
         }
-
-        private void UiManage()
-        {
-            if (Hud == null)
-            {
-                return;
-            } 
-            Hud.UpdateCurrentGun(currentWeapon);
-        }
+        
     }
 }
