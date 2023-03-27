@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (fileName = "NewLineOfSightData", menuName = "ScriptableObjects/AI/LineOfSight", order = 1)]
+[CreateAssetMenu (fileName = "NewLineOfSightData", menuName = "AI/LineOfSight", order = 1)]
 public class LineOfSightDataScriptableObject : ScriptableObject
 {
     public float range = 10;

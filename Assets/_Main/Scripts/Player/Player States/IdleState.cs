@@ -1,17 +1,19 @@
 ﻿using System;
 using UnityEngine;
+using CharacterController = _Main.Scripts.Player.CharacterController;
+
 namespace Assets._Main.Scripts.Characters.Player.Player_States
 {
     public class IdleState<T> : State<T>
     {
         T _walkInput;
-        private Action<Vector2,float> _onIdle;
+        private Action<Vector3,float> _onIdle;
         private CharacterController _controller;
         Action _onAttack;
         Action _animation;
         Action _onPickUp;
 
-        public IdleState(T walkInput, Action<Vector2, float> onIdle, Action onAttack,Action onPickUp, CharacterController controller, Action animation = null)
+        public IdleState(T walkInput, Action<Vector3, float> onIdle, Action onAttack,Action onPickUp, CharacterController controller, Action animation = null)
         {
             _walkInput = walkInput;
             _onIdle = onIdle;
@@ -45,7 +47,7 @@ namespace Assets._Main.Scripts.Characters.Player.Player_States
             {
                 _controller.Model.Reload();
             }
-            _onIdle?.Invoke(Vector2.zero, 0);
+            _onIdle?.Invoke(Vector3.zero, 0);
             _animation?.Invoke();
         }
     }

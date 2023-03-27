@@ -9,16 +9,26 @@ using Utilities;
 
 namespace Assets._Main.Scripts.Characters.Player
 {
+    [RequireComponent(typeof(WeaponHandler), typeof(LifeController), typeof(CharacterView))]
+    [RequireComponent(typeof(Rigidbody))]
+    public static class Helpers 
+    {
+        private static Matrix4x4 _isoMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
+        public static Vector3 ToIso(Vector3 input) => _isoMatrix.MultiplyPoint3x4(input);
+    }
     public class CharacterModel : MonoBehaviour
     {
+
         [SerializeField] private Transform weaponAnchor;
         [SerializeField] private PlayerStatsSO stats;
-        [SerializeField] private float healTime;
+        [SerializeField] private Transform mouseIndicator;
+        [SerializeField] private bool isometricMovement;
+        [SerializeField] private LayerMask layersToLook;
         #region Components
         private WeaponHandler _handler;
         private Camera _camera;
         private LifeController _lifeController;
-        private Rigidbody2D _rb;
+        public Rigidbody _rb { get; private set;}
         private CharacterView _view;
         #endregion
         #region Public Fields
@@ -35,7 +45,7 @@ namespace Assets._Main.Scripts.Characters.Player
         {
             _lifeController = GetComponent<LifeController>();
             _handler = GetComponent<WeaponHandler>();
-            _rb = GetComponent<Rigidbody2D>();
+            _rb = GetComponent<Rigidbody>();
             _handler.Initialize(weaponAnchor);
             _camera = Camera.main;
             _view = GetComponent<CharacterView>();
@@ -53,20 +63,26 @@ namespace Assets._Main.Scripts.Characters.Player
             _lifeController.OnDie += DieActions;
         }
         #region MovementMethods
-        public void Move(Vector2 dir, float desiredSpeed)
+        public void Move(Vector3 dir, float desiredSpeed)
         {
-            if (_rb.velocity.magnitude > stats.MaxSpeed)
+
+            if (_rb.velocity.magnitude > stats.MaxSpeed || desiredSpeed == 0)
             {
                 return;
             }
-            _rb.velocity = dir.normalized * desiredSpeed;
-            _view.MoveAnimation(desiredSpeed);
-        
+            if (!isometricMovement)
+            {
+                _rb.velocity = dir.normalized * desiredSpeed;
+            }
+            else
+            {
+                _rb.velocity = dir.normalized + Helpers.ToIso(dir.normalized) * desiredSpeed;
+            }
+            _view.MoveAnimation(_rb.velocity.normalized.magnitude);
         }
         public void Dash()
         {
             onDash?.Invoke();
-            _view.OnRun();
             _view.MoveAnimation(_rb.velocity.normalized.magnitude);
         }
         #endregion
@@ -104,14 +120,12 @@ namespace Assets._Main.Scripts.Characters.Player
             }
         }
         #endregion
-        public void RotateTowardMouse(Vector2 lookDir)
+        public void RotateTowardMouse()
         {
-            var mousePos=GameUtilities.LookTowardsMousePos(_camera,transform.position,lookDir);
-            if (_handler.CurrentWeapon == null)
-            {
-                return;
-            }
-            _handler.CurrentWeapon.transform.right = mousePos;
+            var mousePos = GameUtilities.GetMouseWorldPosition(_camera, layersToLook);
+            mousePos.y = transform.position.y;
+            transform.LookAt(mousePos);
+            mouseIndicator.transform.position = mousePos;
         }
         private void DieActions()
         {

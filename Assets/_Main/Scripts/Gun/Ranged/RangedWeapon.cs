@@ -22,7 +22,6 @@ namespace _Main.Scripts.Gun
         {
             _bulletSpawner = GetComponent<EntitySpawner>();
             _bulletSpawner.objectToSpawn = baseStats.BulletToSpawn;
-            _bulletSpawner.posToSpawn = attackPoint;
             _currentAmmo = baseStats.MaxAmmo;
             baseStats.maxAmmoInChamber = baseStats.MaxAmmo * baseStats.AmmoCharges;
             _currentAmmoInChamber = baseStats.maxAmmoInChamber;
@@ -103,13 +102,10 @@ namespace _Main.Scripts.Gun
             {
                 return;
             }
-            var newProj = _bulletSpawner.SpawnObject();
+            var newProj = _bulletSpawner.SpawnObject(attackPoint);
            var bullet = newProj.GetComponent<Bullet>();
-            bullet.InitializeStats(baseStats.BulletSpeed,baseStats.Damage,baseStats.Range,baseStats.ContactLayers,attackPoint.right,owner);
+            bullet.InitializeStats(baseStats.BulletSpeed,baseStats.Damage,baseStats.Range,baseStats.ContactLayers,attackPoint.forward,owner);
             MakeSound();
-
-            // var newProj = Instantiate(proyectile, attackPoint.position,attackPoint.rotation);
-            //     newProj.InitializeStats(baseStats.BulletSpeed,baseStats.Damage,baseStats.Range,contactLayers);
         }
 
         public int[]  GetCurrentAmmoInfo()

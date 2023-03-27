@@ -2,7 +2,6 @@
 using Assets._Main.Scripts.Characters.Player;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class CharacterView : MonoBehaviour
 {
     [SerializeField] private TrailRenderer dashTrail;
@@ -17,25 +16,22 @@ public class CharacterView : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
     }
     
-
-    // public void OnDash(bool status)
-    // {
-    //     dashTrail.emitting = status;
-    // }
     public void AssignProperties(CharacterModel model)
     {
         _model = model;
-        Lifebar.Initialize(_model.LifeController);
+        Lifebar?.Initialize(_model.LifeController);
 
     }
-    public void OnRun()
+
+    public void OnIdle()
     {
-        walkParticles.Play();
+        walkParticles.Stop();
     }
 
     public void MoveAnimation(float value)
     {
-        _animator.SetFloat("Speed",value);
+        _animator?.SetFloat("Speed",value);
+
     }
 
 }

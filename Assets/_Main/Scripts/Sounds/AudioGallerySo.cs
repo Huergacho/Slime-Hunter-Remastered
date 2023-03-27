@@ -7,6 +7,5 @@ namespace Assets._Main.Scripts.Sounds
     public class AudioGallerySo : ScriptableObject
     {
         [field: SerializeField] public AudioClip Audio { get; private set; }
-        [field: SerializeField] public string tag { get; private set; }
     }
 }

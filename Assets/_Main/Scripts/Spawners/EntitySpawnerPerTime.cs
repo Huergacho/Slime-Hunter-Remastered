@@ -29,7 +29,7 @@ public class EntitySpawnerPerTime : EntitySpawner
     {
         for (int i = 0; i < quantityToSpawn; i++)
         {
-            SpawnObject();
+            SpawnObject(transform);
             yield return new WaitForSeconds(spawnRate);
         }
         spawnCoroutine = null;

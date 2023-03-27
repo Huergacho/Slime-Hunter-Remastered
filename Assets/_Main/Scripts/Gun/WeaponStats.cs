@@ -1,5 +1,4 @@
-﻿using Assets._Main.Scripts.Pickeables;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace _Main.Scripts.Gun

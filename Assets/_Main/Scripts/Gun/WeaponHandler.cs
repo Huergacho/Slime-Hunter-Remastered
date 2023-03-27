@@ -1,7 +1,9 @@
 ﻿using System;
+using _Main.Scripts.Hud.UI;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
+using static GameManager;
 
 namespace _Main.Scripts.Gun
 {
@@ -14,14 +16,17 @@ namespace _Main.Scripts.Gun
 
         private Transform _anchorPoint;
 
+        [SerializeField] private WeaponHud Hud;
+
         public void Initialize(Transform anchorPoint)
         {
             _anchorPoint = anchorPoint;
-            if (currentWeapon != null)
+            if (currentWeapon == null)
             {
-                currentWeapon.transform.SetParent(_anchorPoint);
-                currentWeapon.transform.SetPositionAndRotation(_anchorPoint.position,_anchorPoint.rotation);
+                return;
             }
+            currentWeapon.transform.SetParent(_anchorPoint);
+            currentWeapon.transform.SetPositionAndRotation(_anchorPoint.position,_anchorPoint.rotation);
         }
 
         public void ChangeWeapon(Weapon newWeapon)
@@ -34,13 +39,16 @@ namespace _Main.Scripts.Gun
             currentWeapon = holdedWeapon;
             currentWeapon.transform.SetParent(_anchorPoint);
             currentWeapon.transform.SetPositionAndRotation(_anchorPoint.position,_anchorPoint.rotation);
-          //  UiManage();
+            UiManage();
         }
 
-        // private void UiManage()
-        // {
-        //     HudManager.Instance.UpdateCurrentGun(currentWeapon);
-        //
-        // }
+        private void UiManage()
+        {
+            if (Hud == null)
+            {
+                return;
+            } 
+            Hud.UpdateCurrentGun(currentWeapon);
+        }
     }
 }

@@ -5,13 +5,12 @@ using UnityEngine.InputSystem;
 public class CharacterInputs : MonoBehaviour
 {
     private static InputManager _inputs;
-    public  Vector2 MovementAxis { get; private set; }
+    public  Vector3 MovementAxis { get; private set; }
     public Vector2 LookDirection { get; private set; }
     public bool IsShooting { get; private set; }
     public bool IsDashing { get; private set; }
-
     public bool IsMoving { get; private set; }
-    
+
     public bool IsReloading { get; private set; }
     
     public bool IsPicking { get; private set; }
@@ -20,9 +19,9 @@ public class CharacterInputs : MonoBehaviour
         _inputs = new InputManager();
         _inputs.Player.Shooting.started += ctx => IsShooting = true;
         _inputs.Player.Shooting.canceled += ctx => IsShooting = false;
-        _inputs.Player.Movement.performed += ctx => MovementAxis = ctx.ReadValue<Vector2>();
+        _inputs.Player.Movement.performed += ctx => MovementAxis = ctx.ReadValue<Vector3>();
         _inputs.Player.Movement.performed += ctx => IsMoving = true;
-        _inputs.Player.Movement.canceled += ctx => MovementAxis = Vector2.zero;
+        _inputs.Player.Movement.canceled += ctx => MovementAxis = Vector3.zero;
         _inputs.Player.Movement.canceled += ctx => IsMoving = false;
         _inputs.Player.Look.performed += ctx => LookDirection = ctx.ReadValue<Vector2>();
         _inputs.Player.Dash.started += ctx => IsDashing = true;

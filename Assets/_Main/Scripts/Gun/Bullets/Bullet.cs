@@ -9,18 +9,18 @@ using UnityEngine;
 using Utilities;
 public class Bullet : MonoBehaviour,IPooleable
 {
-    private Rigidbody2D _rb;
+    private Rigidbody _rb;
     private float _bulletSpeed;
     private int _damage;
     private LayerMask _contactLayers;
     [SerializeField]private float _lifeSpan = 3;
     private GameObject _owner;
-    private TrailRenderer _bulletTrail;
-    [SerializeField] private PoolObject bulletParticle;
+    [SerializeField]private TrailRenderer bulletTrail;
+    private ParticleSystem _bulletParticle;
     private void Awake()
     {
-        _bulletTrail = GetComponentInChildren<TrailRenderer>();
-        _rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody>();
+        _bulletParticle = GetComponent<ParticleSystem>();
     }
 
     public void InitializeStats(float bulletSpeed, int damage, float lifeSpan, LayerMask layerMask, Vector3 firePoint,
@@ -42,7 +42,7 @@ public class Bullet : MonoBehaviour,IPooleable
     {
         Move();
     }
-    protected virtual void OnTriggerEnter2D(Collider2D col)
+    protected virtual void OnTriggerEnter(Collider col)
     {
         if (GameUtilities.IsGoInLayerMask(col.gameObject, _contactLayers))
         {
@@ -58,10 +58,9 @@ public class Bullet : MonoBehaviour,IPooleable
 
     protected virtual void Explode()
     {
-        GenericPool.Instance.SpawnFromPool(bulletParticle, transform.position,
-            transform.rotation);
-        _bulletTrail.emitting = false;
-        gameObject.SetActive(false);
+        _bulletParticle.Play();
+        bulletTrail.emitting = false;
+        // gameObject.SetActive(false);
     }
 
     // private async void LifeSpanCounter()
@@ -92,8 +91,8 @@ public class Bullet : MonoBehaviour,IPooleable
     public void OnObjectSpawn()
     {
         gameObject.SetActive(true);
-        _bulletTrail.emitting = true;
-        _bulletTrail.Clear();
+         bulletTrail.emitting = true;
+         bulletTrail.Clear();
         StartCoroutine(LifeSpanCounter());
 
     }

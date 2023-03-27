@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Utilities
 {
@@ -8,10 +9,10 @@ namespace Utilities
         {
             return layerMask == (layerMask | (1 << go.layer));
         }
-        public static Vector3 LookTowardsMousePos(Camera currCam,Vector3 selfPos,Vector2 lookDir)
+        public static Vector3 LookTowardsMousePos(Camera currCam,Vector3 selfPos,Vector3 lookDir)
         {
             Vector3 worldScreenPosition = currCam.ScreenToWorldPoint(lookDir);
-            Vector2 diff = worldScreenPosition - selfPos;
+            Vector3 diff = worldScreenPosition - selfPos;
             var dist = Vector2.Distance(diff, selfPos);
             if (dist >= 1f)
             {
@@ -21,6 +22,11 @@ namespace Utilities
             {
                 return Vector3.zero;
             }
+        }
+        public static Vector3 GetMouseWorldPosition(Camera currCam, LayerMask layersCanLook)
+        {
+            var ray = currCam.ScreenPointToRay(Mouse.current.position.ReadValue());
+            return Physics.Raycast(ray, out var raycastHit, 100f, layersCanLook) ? raycastHit.point : Vector3.zero;
         }
         public static void OnDrawGizmosSelected(float range, Vector3 position)
         {

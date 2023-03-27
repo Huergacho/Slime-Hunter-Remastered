@@ -8,15 +8,13 @@ using UnityEngine;
 public class EntitySpawner : MonoBehaviour, ISpawner
 {
     [SerializeField] public PoolObject objectToSpawn;
-    
-    public Transform posToSpawn;
-    public GameObject SpawnObject()
+    public GameObject SpawnObject(Transform posToSpawn)
     {
-        return GenericPool.Instance.SpawnFromPool(objectToSpawn, posToSpawn.position, quaternion.identity);
+        return GenericPool.Instance.SpawnFromPool(objectToSpawn, posToSpawn.position, posToSpawn.rotation);
     }
 
     public void OnSpawn()
     {
-        SpawnObject();
+        SpawnObject(null);
     }
 }

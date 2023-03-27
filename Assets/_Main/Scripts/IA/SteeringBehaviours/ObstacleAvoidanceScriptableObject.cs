@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "NewObsctacleAvoidanceData", menuName = "ScriptableObjects/AI/ObstacleAvoidance", order = 1)]
+[CreateAssetMenu(fileName = "NewObsctacleAvoidanceData", menuName = "AI/ObstacleAvoidance", order = 1)]
 public class ObstacleAvoidanceScriptableObject : ScriptableObject
 {
     public Transform self;

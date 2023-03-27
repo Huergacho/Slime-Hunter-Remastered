@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2569ab4ae0514895ba2ec769077be287, type: 3}
+  m_Name: Explode Particle
+  m_EditorClassIdentifier: 
+  <PoolSize>k__BackingField: 10
+  <ObjectToPool>k__BackingField: {fileID: 6392358926662881452, guid: 642cf6eb10ba43144afe0054bf115eea,
+    type: 3}

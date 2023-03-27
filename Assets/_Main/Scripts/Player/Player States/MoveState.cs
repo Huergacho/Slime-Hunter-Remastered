@@ -8,12 +8,12 @@ namespace _Main.Scripts.Player.Player_States
         T _idleInput;
         Action _onShoot;
         Action _onDash;
-        Action<Vector2,float> _onRun;
+        Action<Vector3,float> _onRun;
         CharacterController _controller;
         private float _desiredSpeed;
         Action _animation;
         private Action _onPickUp;
-        public MoveState(T idleInput, Action<Vector2, float> onRun, Action onShoot, Action onDash, Action onPickUp, CharacterController controller, float desiredSpeed, Action animation = null)
+        public MoveState(T idleInput, Action<Vector3, float> onRun, Action onShoot, Action onDash, Action onPickUp, CharacterController controller, float desiredSpeed, Action animation = null)
         {
             _idleInput = idleInput;
             _onRun = onRun;
@@ -26,9 +26,10 @@ namespace _Main.Scripts.Player.Player_States
         }
         public override void Execute()
         {
-            if (!_controller.Inputs.IsMoving || GameManager.Instance.IsPaused)
+            if (!_controller.Inputs.IsMoving|| GameManager.Instance.IsPaused)
             {
                 _parentFSM.Transition(_idleInput);
+                Debug.Log("Paso a Idle");
                 return;
             }
 
@@ -53,7 +54,7 @@ namespace _Main.Scripts.Player.Player_States
             {
                 _onPickUp?.Invoke();
             }
-            _onRun?.Invoke(new Vector2(_controller.Inputs.MovementAxis.x, _controller.Inputs.MovementAxis.y), _desiredSpeed);
+            _onRun?.Invoke(new Vector3(_controller.Inputs.MovementAxis.x,0,_controller.Inputs.MovementAxis.z), _desiredSpeed);
             _animation?.Invoke();
         }
     }
