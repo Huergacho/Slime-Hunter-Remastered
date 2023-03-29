@@ -920,6 +920,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: c52930b102e5df04aaa017245e1b53e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1700,6 +1701,11 @@ PrefabInstance:
       propertyPath: _canvasFiller
       value: 
       objectReference: {fileID: 1273577979}
+    - target: {fileID: 45312964138501717, guid: c2262dd5f6bccd04094430fa659f4f11,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 040d65e685ff26942ab4aa696c1b782b, type: 3}
     - target: {fileID: 45312964138501717, guid: c2262dd5f6bccd04094430fa659f4f11,
         type: 3}
       propertyPath: m_ApplyRootMotion

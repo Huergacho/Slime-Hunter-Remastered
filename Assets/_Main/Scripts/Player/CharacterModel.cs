@@ -47,6 +47,7 @@ namespace Assets._Main.Scripts.Characters.Player
         }
         private void Start()
         {
+            _handler.OnWeaponChange += EquipWeapon;
             _lifeController.AssignMaxLife(stats.MaxLife);
             _view.AssignProperties(this);
             SuscribeEvents();
@@ -86,11 +87,12 @@ namespace Assets._Main.Scripts.Characters.Player
         {
             if (_handler.CurrentWeapon == null)
             {
+                _view.EquipAnimation(false);
                 return;
             }
-
             var currWp = _handler.CurrentWeapon.GetComponent<RangedWeapon>();
             _handler.CurrentWeapon.Attack();
+            _view.AttackAnimation(true);
         }
 
         public void ResetShoot()
@@ -100,6 +102,8 @@ namespace Assets._Main.Scripts.Characters.Player
                 return;
             }
             _handler.CurrentWeapon.ResetShoot();
+            _view.AttackAnimation(false);
+
         }
 
         public void Reload()
@@ -127,6 +131,11 @@ namespace Assets._Main.Scripts.Characters.Player
             gameObject.SetActive(false);
         }
 
+        public void EquipWeapon(Weapon weapon)
+        {
+            if(weapon != null)
+                _view.EquipAnimation(true);
+        }
         private void ModifyHealth(float curr, float rest)
         {
         }
