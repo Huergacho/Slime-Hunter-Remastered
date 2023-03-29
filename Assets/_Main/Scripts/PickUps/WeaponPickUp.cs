@@ -28,6 +28,11 @@ namespace _Main.Scripts.PickUps
             prefabToInstance = newPrefab;
         }
 
+        protected override void ActionBeforeDisappear()
+        {
+            
+        }
+
         protected override void ActionsOnPickUp()
         {            
             var newWeapon = Instantiate(prefabToInstance);

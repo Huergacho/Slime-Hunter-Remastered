@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Player
+    uniqueID: 3109851089
+    locked: 0
+  - name: Pickeables
+    uniqueID: 3628443015
+    locked: 0
+  - name: Obstacle
+    uniqueID: 4046176119
+    locked: 0
+  - name: Proyectile
+    uniqueID: 1335495057
+    locked: 0
