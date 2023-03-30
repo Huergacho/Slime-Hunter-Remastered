@@ -10,7 +10,6 @@ public class ShowTroughWalls : MonoBehaviour
     [SerializeField,Range(0,1)] private float expandSize = 0.5f;
     public Material WallMaterial;
     private Camera _camera ;
-    
     [SerializeField]
     private LayerMask colMask;
 
@@ -45,7 +44,7 @@ public class ShowTroughWalls : MonoBehaviour
     {
         var dir = _camera.transform.forward - transform.position;
         var ray = new Ray(transform.position, dir.normalized);
-        if(Physics.Raycast(ray,3000,colMask))
+        if(Physics.Raycast(ray,dir.magnitude,colMask))
         {
             return true;
         }
@@ -56,4 +55,5 @@ public class ShowTroughWalls : MonoBehaviour
         }
         return false;
     }
+    
 }

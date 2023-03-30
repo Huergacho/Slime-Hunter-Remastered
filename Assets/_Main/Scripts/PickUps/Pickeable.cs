@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using Assets._Main.Scripts.Sounds;
 using Assets._Main.Thecnical.Scripts.Interactables;
+using TMPro;
 using UnityEngine;
 using Utilities;
 
@@ -11,16 +13,17 @@ namespace _Main.Scripts.PickUps
     {
         [SerializeField] protected PickupStats stats;
         private Coroutine disapearRoutine;
-        protected SpriteRenderer _spriteRenderer;
+        [SerializeField] private CanvasFiller timer;
+        private float currCooldown;
         protected virtual void Awake()
         {
-            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
 
         protected virtual void Start()
         {
             if (disapearRoutine == null && stats.canDisappear)
             {
+                currCooldown = stats.lifeTime;
                 disapearRoutine = StartCoroutine(Disappear());
             }
         }
@@ -41,13 +44,27 @@ namespace _Main.Scripts.PickUps
                 }
             }
         }
-        
+
+        private void Update()
+        {
+            if (!stats.canDisappear)
+            {
+                return;
+            }
+            currCooldown -= Time.deltaTime;
+            if (timer == null)
+            {
+                return;
+            }
+            timer.UpdateCanvas(currCooldown,stats.lifeTime);
+        }
+
         private IEnumerator Disappear()
         {
             DisappearAnimation();
-            yield return new WaitForSeconds(stats.lifeTime / 2);
+            yield return new WaitUntil(() => currCooldown <= stats.lifeTime / 2);
             ActionBeforeDisappear();
-            yield return new WaitForSeconds(stats.lifeTime / 2);
+            yield return new WaitUntil(() => currCooldown <= 0);
             disapearRoutine = null;
             DisappearAction();
         }

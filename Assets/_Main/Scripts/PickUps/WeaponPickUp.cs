@@ -1,4 +1,6 @@
-﻿using _Main.Scripts.Gun;
+﻿using System;
+using System.Collections;
+using _Main.Scripts.Gun;
 using UnityEngine;
 
 namespace _Main.Scripts.PickUps
@@ -15,24 +17,22 @@ namespace _Main.Scripts.PickUps
 
         protected override void Start()
         {
+
             if (_filter != null)
             {
-                _filter.mesh = prefabToInstance.GetComponentInChildren<MeshFilter>().sharedMesh;
+                _filter.mesh= prefabToInstance.GetComponentInChildren<MeshFilter>().sharedMesh;
             }
             base.Start();
 
         }
+        
 
         public void ChangePrefab(GameObject newPrefab)
         {
             prefabToInstance = newPrefab;
+            _filter.mesh= prefabToInstance.GetComponentInChildren<MeshFilter>().sharedMesh;
         }
-
-        protected override void ActionBeforeDisappear()
-        {
-            
-        }
-
+        
         protected override void ActionsOnPickUp()
         {            
             var newWeapon = Instantiate(prefabToInstance);

@@ -1,4 +1,5 @@
 ﻿using System;
+using _Main.Scripts.Controllers;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public AudioManager AudioManager { get; private set; }
     public bool IsPaused { get; private set;}
     public event Action<bool> OnPaused;
+    private GameInputs _inputs;
     private void Awake()
     {
         if (Instance == null)
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour
         IsPaused = false;
         AudioManager = GetComponent<AudioManager>();
     }
+
     public void SetPlayer(GameObject player)
     {
         Player = player;

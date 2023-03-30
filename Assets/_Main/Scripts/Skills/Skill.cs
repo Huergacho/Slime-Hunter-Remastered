@@ -23,17 +23,18 @@ namespace Assets._Main.Scripts.Skills
         {
             if (_habilityUsed && !GameManager.Instance.IsPaused)
             {
-                _currentCooldown -= Time.deltaTime;
                 if (_canvasFiller == null || !hasToRecharge)
                 {
                     return;
                 }
-                _canvasFiller?.UpdateCanvas(_currentCooldown, skillStats.HablityCooldown);
-
-                if (_currentCooldown <= 0)
+                if (_currentCooldown < skillStats.HablityCooldown)
                 {
-                    Recharge();
+                    _currentCooldown += Time.deltaTime;
+                    _canvasFiller.UpdateCanvas(_currentCooldown, skillStats.HablityCooldown);
+                    return;
                 }
+                
+                Recharge();
 
             }
         }
@@ -41,8 +42,8 @@ namespace Assets._Main.Scripts.Skills
         {
             if (!_habilityUsed)
             {
+                _currentCooldown = 0;
                 SkillAction();
-                _currentCooldown = skillStats.HablityCooldown;
                 EnterInCooldown();
             }
         }
@@ -65,7 +66,6 @@ namespace Assets._Main.Scripts.Skills
 
         protected void Recharge()
         {
-            _canvasFiller.UpdateCanvas(1, 1);
             if (Sound != null)
             {
                 GameManager.Instance.AudioManager.ReproduceOnce(Sound);

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000fb0d10bc347909a789fb865c3fe71, type: 3}
   m_Name: Dash Skill
   m_EditorClassIdentifier: 
-  <HabilityDuration>k__BackingField: 0.11
-  <HablityCooldown>k__BackingField: 0.62
+  <HabilityDuration>k__BackingField: 0.1
+  <HablityCooldown>k__BackingField: 0.5
