@@ -15,7 +15,14 @@ namespace _Main.Scripts.Utilities
 
         private void Update()
         {
-            transform.LookAt(GameUtilities.GetMouseWorldPosition(_camera,_layerMaskToLook));
+            var mousePos = GameUtilities.GetMouseWorldPosition(_camera, _layerMaskToLook);
+            if (mousePos != Vector3.zero)
+            {
+                transform.LookAt(mousePos);
+            }
+            mousePos.y = transform.position.y;
+            transform.LookAt(mousePos);
+
         }
     }
 }

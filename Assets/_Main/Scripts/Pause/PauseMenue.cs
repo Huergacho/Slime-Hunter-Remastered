@@ -14,7 +14,6 @@ public class PauseMenue : MonoBehaviour
 
     private void Show(bool status)
     {
-        print(status);
         pauseMenueCanvas.SetActive(status);
     }
 }
