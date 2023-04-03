@@ -3,21 +3,21 @@ using Assets._Main.Scripts.Characters.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterView : MonoBehaviour
+public class PlayerView : MonoBehaviour
 {
     [SerializeField] private TrailRenderer dashTrail;
     [SerializeField] private ParticleSystem walkParticles;
 
     [field: SerializeField] public LifeUI Lifebar { get; private set; }
     private Animator _animator;
-    private CharacterModel _model;
+    private PlayerModel _model;
 
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
     }
 
-    public void AssignProperties(CharacterModel model)
+    public void AssignProperties(PlayerModel model)
     {
         _model = model;
         Lifebar?.Initialize(_model.LifeController);

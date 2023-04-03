@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CharacterInputs : MonoBehaviour
+public class PlayerInputs : MonoBehaviour
 {
     private static InputManager _inputs;
     public  Vector3 MovementAxis { get; private set; }

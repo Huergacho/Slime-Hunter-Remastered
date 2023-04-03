@@ -6,27 +6,18 @@ namespace _Main.Scripts.Hud.UI
 {
     public class PointCounter : MonoBehaviour, IUI
     {
-        [SerializeField] private TextMeshProUGUI pointsText;
-        private Animator _animator;
+        private PointVisual _pointVisual;
         private int _currentPoints;
+        public Action<int> OnUpdatePoints;
+
         private void Awake()
         {
-            _animator = GetComponent<Animator>();
+            _pointVisual = GetComponent<PointVisual>();
         }
-
         private void Start()
         {
-            pointsText.text = "0";
-        }
-        public void UpdatePointText()
-        {
-            _animator?.Play("Points");
-            pointsText.text = _currentPoints.ToString();
-        }
-
-        public void UpdateInfo()
-        {
-            UpdatePointText();
+            GameManager.Instance.PointCounter = this;
+            _pointVisual?.SuscribeEvents(this);
         }
         public void AddPoints(int quantity)
         {
@@ -41,15 +32,9 @@ namespace _Main.Scripts.Hud.UI
             _currentPoints -= quantity;
             UpdateInfo();
         }
-        public bool CanDeletePoints(int quantity)
+        public void UpdateInfo()
         {
-            
-            {
-                DeletePoints(quantity);
-                return true;
-            }
-
-            return false;
+            OnUpdatePoints?.Invoke(_currentPoints);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
+using _Main.Scripts.Player;
 using UnityEngine;
-using CharacterController = _Main.Scripts.Player.CharacterController;
 
 namespace Assets._Main.Scripts.Characters.Player.Player_States
 {
@@ -8,12 +8,12 @@ namespace Assets._Main.Scripts.Characters.Player.Player_States
     {
         T _walkInput;
         private Action<Vector3,float> _onIdle;
-        private CharacterController _controller;
+        private PlayerController _controller;
         Action _onAttack;
         Action _animation;
         Action _onPickUp;
 
-        public IdleState(T walkInput, Action<Vector3, float> onIdle, Action onAttack,Action onPickUp, CharacterController controller, Action animation = null)
+        public IdleState(T walkInput, Action<Vector3, float> onIdle, Action onAttack,Action onPickUp, PlayerController controller, Action animation = null)
         {
             _walkInput = walkInput;
             _onIdle = onIdle;

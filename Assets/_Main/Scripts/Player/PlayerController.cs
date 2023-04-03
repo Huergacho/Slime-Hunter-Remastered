@@ -7,20 +7,20 @@ using UnityEngine;
 
 namespace _Main.Scripts.Player
 {
-    [RequireComponent(typeof(CharacterModel),typeof(CharacterInputs),typeof(PickUpDetector))]
-    public class CharacterController : MonoBehaviour,IFSM
+    [RequireComponent(typeof(PlayerModel),typeof(PlayerInputs),typeof(PickUpDetector))]
+    public class PlayerController : MonoBehaviour,IFSM
     {
-        private CharacterInputs _inputs;
-        public  CharacterInputs Inputs => _inputs;
-        private CharacterModel _model;
-        public CharacterModel Model => _model;
+        private PlayerInputs _inputs;
+        public  PlayerInputs Inputs => _inputs;
+        private PlayerModel _model;
+        public PlayerModel Model => _model;
         private FSM<PlayerStates> _fsm;
         private PickUpDetector _pickUpDetector;
         private void Awake()
         {
             _pickUpDetector = GetComponent<PickUpDetector>();
-            _model = GetComponent<CharacterModel>();
-            _inputs = GetComponent<CharacterInputs>();
+            _model = GetComponent<PlayerModel>();
+            _inputs = GetComponent<PlayerInputs>();
         }
 
         private void Start()

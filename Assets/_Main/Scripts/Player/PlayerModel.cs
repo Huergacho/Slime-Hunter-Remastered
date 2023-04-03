@@ -9,9 +9,9 @@ using Utilities;
 
 namespace Assets._Main.Scripts.Characters.Player
 {
-    [RequireComponent(typeof(WeaponHandler), typeof(LifeController), typeof(CharacterView))]
+    [RequireComponent(typeof(WeaponHandler), typeof(LifeController), typeof(PlayerView))]
     [RequireComponent(typeof(Rigidbody))]
-    public class CharacterModel : MonoBehaviour
+    public class PlayerModel : MonoBehaviour
     {
 
         [SerializeField] private Transform weaponAnchor;
@@ -24,7 +24,7 @@ namespace Assets._Main.Scripts.Characters.Player
         private Camera _camera;
         private LifeController _lifeController;
         public Rigidbody _rb { get; private set;}
-        private CharacterView _view;
+        private PlayerView _view;
         #endregion
         #region Public Fields
         public LifeController LifeController => _lifeController;
@@ -43,7 +43,7 @@ namespace Assets._Main.Scripts.Characters.Player
             _rb = GetComponent<Rigidbody>();
             _handler.Initialize(weaponAnchor);
             _camera = Camera.main;
-            _view = GetComponent<CharacterView>();
+            _view = GetComponent<PlayerView>();
         }
         private void Start()
         {

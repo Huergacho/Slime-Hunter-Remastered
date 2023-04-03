@@ -22,6 +22,12 @@ namespace _Main.Scripts.Hud.UI
 
         [SerializeField] private float roundRestTime;
         private Coroutine _waitTimeRoutine = null;
+        public  static RoundCounter Instance;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         private void Start()
         {
@@ -34,18 +40,19 @@ namespace _Main.Scripts.Hud.UI
             if (_currentEnemies == 0 && _waitTimeRoutine == null)
             {
                 AddRound();
+                UpdateRoundText();
             }
         }
 
-        public void UpdateRoundText(int currRound, float waitTime)
+        public void UpdateRoundText()
         {
-            roundText.text = currRound.ToString();
+            roundText.text = currRounds.ToString();
             if (waitRest != null)
             {
                 return;
             }
 
-            waitRest = StartCoroutine(WaitTime(waitTime));
+            waitRest = StartCoroutine(WaitVisuals());
         }
 
         protected virtual IEnumerator WaitTime()
@@ -80,14 +87,14 @@ namespace _Main.Scripts.Hud.UI
         {
             _currentEnemies--;
         }
-        private IEnumerator WaitTime(float secs)
+        private IEnumerator WaitVisuals()
         {
             var seq = DOTween.Sequence();
             seq.SetLoops(3);
-            seq.Insert(0, roundText.DOColor(Color.white, secs / 4));
-            seq.Insert(1, roundText.DOColor(Color.red, secs / 4));
+            seq.Insert(0, roundText.DOColor(Color.white, roundRestTime / 4));
+            seq.Insert(1, roundText.DOColor(Color.red, roundRestTime / 4));
 
-            yield return new WaitForSeconds(secs);
+            yield return new WaitForSeconds(roundRestTime);
             seq.Complete();
             roundText.color = Color.red;
             waitRest = null;

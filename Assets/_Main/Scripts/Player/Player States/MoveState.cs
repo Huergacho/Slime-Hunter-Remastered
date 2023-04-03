@@ -9,11 +9,11 @@ namespace _Main.Scripts.Player.Player_States
         Action _onShoot;
         Action _onDash;
         Action<Vector3,float> _onRun;
-        CharacterController _controller;
+        PlayerController _controller;
         private float _desiredSpeed;
         Action _animation;
         private Action _onPickUp;
-        public MoveState(T idleInput, Action<Vector3, float> onRun, Action onShoot, Action onDash, Action onPickUp, CharacterController controller, float desiredSpeed, Action animation = null)
+        public MoveState(T idleInput, Action<Vector3, float> onRun, Action onShoot, Action onDash, Action onPickUp, PlayerController controller, float desiredSpeed, Action animation = null)
         {
             _idleInput = idleInput;
             _onRun = onRun;

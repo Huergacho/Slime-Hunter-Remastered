@@ -1,5 +1,6 @@
 ﻿using System;
 using _Main.Scripts.Controllers;
+using _Main.Scripts.Hud.UI;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,11 +9,12 @@ using UnityEngine.Serialization;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public GameObject Player { get; private set;}
+    [field: SerializeField]public GameObject Player { get; private set;}
     [field: SerializeField] public AudioManager AudioManager { get; private set; }
     public bool IsPaused { get; private set;}
     public event Action<bool> OnPaused;
     private GameInputs _inputs;
+    [field: SerializeField] public PointCounter PointCounter;
     private void Awake()
     {
         if (Instance == null)
@@ -26,7 +28,6 @@ public class GameManager : MonoBehaviour
         IsPaused = false;
         AudioManager = GetComponent<AudioManager>();
     }
-
     public void SetPlayer(GameObject player)
     {
         Player = player;
