@@ -9,6 +9,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/986bc431530c4e10a9a66db75ccf7a921a000/0a/dd467a15/CharacterController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f1212ad1dec44ce7b7147976b91869c3157800/3f/2c30821a/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f1212ad1dec44ce7b7147976b91869c3157800/4d/2e53ff8f/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f1212ad1dec44ce7b7147976b91869c3157800/e3/84d08a51/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Main/Scripts/Skills/Dash/Dash.cs" root0="FORCE_HIGHLIGHTING" />
@@ -79,7 +80,9 @@
       <workItem from="1680129933020" duration="6226000" />
       <workItem from="1680178742993" duration="2023000" />
       <workItem from="1680446488588" duration="3383000" />
-      <workItem from="1680528767804" duration="1964000" />
+      <workItem from="1680528767804" duration="4638000" />
+      <workItem from="1680610302452" duration="2118000" />
+      <workItem from="1680700686247" duration="5327000" />
     </task>
     <servers />
   </component>

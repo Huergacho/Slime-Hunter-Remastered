@@ -1,13 +1,15 @@
 
 using UnityEngine;
 using System;
+using _Main.Scripts.Hud.UI;
 using _Main.Scripts.Player;
 using Assets._Main.Scripts.Characters.Player;
+using Characters.Enemy;
 using States;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
-[RequireComponent(typeof(EnemyModel))]
-public class EnemyController : MonoBehaviour
+[RequireComponent(typeof(EnemyModel),typeof(LifeController))]
+public class EnemyController : MonoBehaviour, IPooleable
 {
     private EnemyModel _enemyModel;
     public EnemyModel EnemyModel => _enemyModel;
@@ -16,23 +18,44 @@ public class EnemyController : MonoBehaviour
     private bool _waitForIdleState;
     private FSM<EnemyStates> _fsm;
     private INode _root;
-    private NavMeshAgent _agent;
-    
+    public LifeController LifeController { get; private set;}
+    [SerializeField] private EnemyStatsSO stats;
+    public EnemyStatsSO Stats => stats;
+
+    #region Events
+
     public event Action<float> OnMove; 
+    public event Action OnAttack; 
+    public event Action OnTakeDamage; 
+    public event Action OnDie; 
+    public event Action OnRespawn; 
+    
+
+    #endregion
+
     private void Awake()
     {
-        _agent = GetComponent<NavMeshAgent>();
+        LifeController = GetComponent<LifeController>();
         _enemyModel = GetComponent<EnemyModel>();
+
     }
 
     private void Start()
     {
+        
+        SuscribeEvents(); 
         _enemyModel.SuscribeEvents(this);
-        _agent.updateRotation = false;
-        _agent.updateUpAxis = false;
+
         _targetModel = GameManager.Instance.Player.GetComponent<PlayerController>();
         InitDecisionTree();
         InitFsm();
+    }
+
+    private void SuscribeEvents()
+    {
+        LifeController.OnModifyHealth += OnTakeDamageCommand;
+        LifeController.OnDie += DieCommand;
+
     }
     #region FSM Methods
     private void InitDecisionTree()
@@ -70,7 +93,7 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if (!_targetModel.Model.LifeController.IsAlive()) return;
+        if (!_targetModel.Model.LifeController.IsAlive() || !LifeController.IsAlive()) return;
         _fsm.UpdateState();
 
     }
@@ -82,17 +105,13 @@ public class EnemyController : MonoBehaviour
     public bool IsCloseEnoughToAttack()
     {
         var distance = Vector3.Distance(transform.position, _targetModel.transform.position);
-        return distance <= _enemyModel.Stats.DistanceToAttack;
+        return distance <= stats.DistanceToAttack;
     }
     
     public void OnMoveCommand(float desiredSpeed)
     { 
         
-        _agent.speed = desiredSpeed;
-        if (desiredSpeed != 0)
-        {
-            _agent.SetDestination(_targetModel.transform.position);
-        }
+
         OnMove?.Invoke(desiredSpeed);
         Rotate();
     }
@@ -106,18 +125,31 @@ public class EnemyController : MonoBehaviour
     }
     public void OnAttackCommand()
     {
-        _enemyModel.Attack();
+        OnAttack?.Invoke();
     }
-    private void OnDieCommand()
+
+    public void DieCommand()
     {
+        OnDie?.Invoke();
     }
-    public void OnHit(GameObject hitter)
+
+    public void OnTakeDamageCommand(float a, float b)
     {
-        // var owner = hitter.GetComponent<CharacterModel>();
-        // if (owner != null)
-        // {
-        //     print("Lo hacemo");
-        //     owner.onHitAction?.Invoke();
-        // }
+        OnTakeDamage?.Invoke();
+    }
+    public void OnObjectSpawn()
+    {
+        OnRespawn?.Invoke();
+        gameObject.SetActive(true);
+        if (RoundCounterController.Instance.CurrentRound > 1)
+        {
+            ModifyMaxHealth();
+        }
+
+        LifeController.Respawn();
+    }
+    private void ModifyMaxHealth()
+    {
+        LifeController.AssignMaxLife(LifeController.MaxLife + stats.PerRoundLifeUpgrade);   
     }
 }

@@ -7,22 +7,23 @@ using UnityEngine;
 
 namespace _Main.Scripts.Hud.UI
 {
-    public class RoundCounter : MonoBehaviour, IUI
+    public class RoundCounterController : MonoBehaviour, IUI
     {
         [SerializeField] private EntitySpawnerPerTime[] enemySpawners;
-        [SerializeField] private TextMeshProUGUI roundText;
-        private Coroutine waitRest;
         private int _currentEnemies;
 
         [SerializeField] private int currRounds;
         public int CurrentRound => currRounds;
 
         [SerializeField] private int enemySpawnQuantity;
-    
-
+        
         [SerializeField] private float roundRestTime;
         private Coroutine _waitTimeRoutine = null;
-        public  static RoundCounter Instance;
+        public  static RoundCounterController Instance;
+
+        public Action<int> OnUpdateRound;
+        public Action<bool> IsWaiting;
+        [SerializeField] private RoundCounterVisuals _visuals;
 
         private void Awake()
         {
@@ -31,6 +32,10 @@ namespace _Main.Scripts.Hud.UI
 
         private void Start()
         {
+            if (_visuals != null)
+            {
+                _visuals.SuscribeEvents(this);
+            }
             _waitTimeRoutine = StartCoroutine(WaitTime());
 
         }
@@ -40,25 +45,17 @@ namespace _Main.Scripts.Hud.UI
             if (_currentEnemies == 0 && _waitTimeRoutine == null)
             {
                 AddRound();
-                UpdateRoundText();
             }
         }
-
-        public void UpdateRoundText()
-        {
-            roundText.text = currRounds.ToString();
-            if (waitRest != null)
-            {
-                return;
-            }
-
-            waitRest = StartCoroutine(WaitVisuals());
-        }
+        
 
         protected virtual IEnumerator WaitTime()
         {
+            IsWaiting?.Invoke(true);
             currRounds++;
+            OnUpdateRound?.Invoke(currRounds);
             yield return new WaitForSeconds(roundRestTime);
+            IsWaiting?.Invoke(false);
             SpawnEnemies();
             _waitTimeRoutine = null;
             StopCoroutine(WaitTime());
@@ -87,19 +84,7 @@ namespace _Main.Scripts.Hud.UI
         {
             _currentEnemies--;
         }
-        private IEnumerator WaitVisuals()
-        {
-            var seq = DOTween.Sequence();
-            seq.SetLoops(3);
-            seq.Insert(0, roundText.DOColor(Color.white, roundRestTime / 4));
-            seq.Insert(1, roundText.DOColor(Color.red, roundRestTime / 4));
 
-            yield return new WaitForSeconds(roundRestTime);
-            seq.Complete();
-            roundText.color = Color.red;
-            waitRest = null;
-
-        }
 
         public void UpdateInfo()
         {

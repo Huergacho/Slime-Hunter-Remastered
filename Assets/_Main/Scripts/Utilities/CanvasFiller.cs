@@ -14,7 +14,7 @@ public class CanvasFiller : MonoBehaviour
     protected Coroutine progressiveCanvas;
     [SerializeField] protected bool isProgressive = false;
 
-    private void Start()
+    protected virtual void Start()
     {
         if (isPermanent)
         {

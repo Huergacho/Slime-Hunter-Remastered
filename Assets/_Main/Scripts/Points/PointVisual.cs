@@ -23,7 +23,7 @@ namespace _Main.Scripts.Hud.UI
         }
         public void UpdatePointText(int curr)
         {
-            _animator?.Play("Points");
+            _animator?.Play("Add Points");
             pointsText.text = curr.ToString();
         }
     }

@@ -125,6 +125,11 @@ namespace Assets._Main.Scripts.Characters.Player
             mouseIndicator.transform.position = mousePos;
             mousePos.y = transform.position.y;
             transform.LookAt(mousePos);
+            if (_handler.CurrentWeapon == null)
+            {
+                return;
+            }
+            _handler.CurrentWeapon.transform.LookAt(mousePos);
         }
         private void DieActions()
         {

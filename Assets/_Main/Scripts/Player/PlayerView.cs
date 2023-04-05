@@ -7,8 +7,6 @@ public class PlayerView : MonoBehaviour
 {
     [SerializeField] private TrailRenderer dashTrail;
     [SerializeField] private ParticleSystem walkParticles;
-
-    [field: SerializeField] public LifeUI Lifebar { get; private set; }
     private Animator _animator;
     private PlayerModel _model;
 
@@ -20,7 +18,6 @@ public class PlayerView : MonoBehaviour
     public void AssignProperties(PlayerModel model)
     {
         _model = model;
-        Lifebar?.Initialize(_model.LifeController);
 
     }
 

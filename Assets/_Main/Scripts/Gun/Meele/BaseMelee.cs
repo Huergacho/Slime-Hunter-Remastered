@@ -7,32 +7,35 @@ namespace _Main.Scripts.Gun.Meele
 {
     public class BaseMelee : Weapon
     {
-        [SerializeField] protected WeaponStats _stats;
         protected override void RealizeAttack()
         {
-            Collider2D data =  Physics2D.OverlapCircle(attackPoint.position, _stats.Range,_stats.ContactLayers);
+            Collider[] data =  Physics.OverlapSphere(attackPoint.position, stats.Range,stats.ContactLayers);
             MakeSound();
-            if (data != null)
+            foreach (var col in data)
             {
-               data.gameObject.GetComponent<LifeController>().TakeDamage(_stats.Damage);
+                if (col != null)
+                {
+                    col.gameObject.GetComponent<LifeController>().TakeDamage(stats.Damage);
+                }
             }
+
         }
 
         protected override async void WaitForNextAttack()
         {
             canAttack = false;
-            await Task.Delay(TimeSpan.FromSeconds(_stats.AttackRate));
+            await Task.Delay(TimeSpan.FromSeconds(stats.AttackRate));
             canAttack = true;
         }
 
         private void OnDrawGizmosSelected()
         {
-            if (_stats == null)
+            if (stats == null)
             {
                 return;
             }
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, _stats.Range);
+            Gizmos.DrawWireSphere(transform.position, stats.Range);
         }
     }
 }

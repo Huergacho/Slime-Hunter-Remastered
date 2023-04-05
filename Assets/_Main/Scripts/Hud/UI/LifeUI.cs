@@ -6,17 +6,24 @@ using UnityEngine.UI;
 
 public class LifeUI : CanvasFiller
 {
+    [SerializeField] private LifeController owner;
+    protected override void Start()
+    {
+        base.Start();
+        Initialize(owner);
+    }
+
     public void Initialize(LifeController controller)
     {
-        SuscribeEvents(controller);
+        SuscribeEvents();
         UpdateCanvas(controller.CurrentLife,controller.MaxLife);
         if(isPermanent){return;}
         ClearImage();
     }
 
-    private void SuscribeEvents(LifeController controller)
+    private void SuscribeEvents()
     {
-        controller.OnModifyHealth += UpdateCanvas;
-        controller.OnDie += ClearImage;
+        owner.OnModifyHealth += UpdateCanvas;
+        owner.OnDie += ClearImage;
     }
 }

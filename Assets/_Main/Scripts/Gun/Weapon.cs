@@ -11,6 +11,9 @@ namespace _Main.Scripts.Gun
 {
     public class Weapon : MonoBehaviour,ISound
     {
+        [SerializeField] protected WeaponStats stats;
+        public WeaponStats Stats => stats;
+
         protected bool canAttack = true;
         [SerializeField]protected Transform attackPoint;
         private bool _hasShooted;

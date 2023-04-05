@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ee92490a634e3b8251589381e85eaa, type: 3}
   m_Name: WeaponStats
   m_EditorClassIdentifier: 
-  AttackRate: 0.5
-  Damage: 1
-  Range: 0.3
+  AttackRate: 0.16
+  Damage: 12
+  Range: 0.56
   ContactLayers:
     serializedVersion: 2
     m_Bits: 256

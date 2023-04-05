@@ -25,6 +25,6 @@ public class EnemySeekState<T> : State<T>
             _root.Execute();
             return;
         }
-        _controller.OnMoveCommand(_controller.EnemyModel.Stats.MaxSpeed);
+        _controller.OnMoveCommand(_controller.Stats.MaxSpeed);
     }
 }

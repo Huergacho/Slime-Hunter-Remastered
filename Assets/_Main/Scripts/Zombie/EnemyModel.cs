@@ -7,49 +7,75 @@ using Assets._Main.Scripts.Generic_Pool;
 using UnityEngine;
 using Characters.Enemy;
 using MyEngine;
+using UnityEngine.AI;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
-[RequireComponent(typeof(EnemyView),typeof(LifeController),typeof(WeaponHandler))]
-public class EnemyModel : MonoBehaviour, IPooleable
+[RequireComponent(typeof(EnemyController),typeof(WeaponHandler))]
+public class EnemyModel : MonoBehaviour
 {
-    [SerializeField] private EnemyStatsSO stats;
     [SerializeField]private Transform attackPoint;
-    public EnemyStatsSO Stats => stats;
-    private EnemyView _view;
-    [SerializeField] private PoolObject pointDrop;
-    [SerializeField] private Dropper dropper;
+    [SerializeField]private EnemyView view;
+    // [SerializeField] private PoolObject pointDrop;
+    // [SerializeField] private Dropper dropper;
+    private EnemyController _controller;
+    private NavMeshAgent _agent;
+
+    #region Events
+
+    public event Action<Weapon> OnAttack;
+    public event Action OnTakeDamage;
+
+    #endregion
     #region Components
     private WeaponHandler _handler;
-    public LifeController LifeController { get; private set;}
     #endregion
     private void Awake()
     {
         _handler = GetComponent<WeaponHandler>();
-        LifeController = GetComponent<LifeController>();
-        _view = GetComponent<EnemyView>();
+        _agent = GetComponent<NavMeshAgent>();
+
     }
 
     private void Start()
     {
-        _view.AssignProperties(this);
-        LifeController.AssignMaxLife(stats.MaxLife);
+        view?.AssignProperties(this);
+        _agent.updateRotation = false;
+        _agent.updateUpAxis = false;
         _handler.Initialize(attackPoint);
         
     }
 
     public void SuscribeEvents(EnemyController controller)
     {
-        controller.OnMove += Move;
-        LifeController.OnDie += Die;
-        LifeController.OnModifyHealth += TakeDamage;
+        _controller = controller;
+        _controller.OnDie += Die;
+        _controller.OnMove += Move;
+        _controller.OnTakeDamage += TakeDamage;
+        _controller.OnAttack += Attack;
+        _controller.OnRespawn += Respawn;
+    }
+
+    private void Respawn()
+    {
+        _controller.OnTakeDamage += TakeDamage;
+        _controller.OnDie += Die;
+
+
     }
     public void Attack()
     {
         if (_handler.CurrentWeapon == null)
         {
+
             return;
         }
+        OnAttack?.Invoke(_handler.CurrentWeapon);
+    }
+
+    public void AttackAnimationEvent()
+    {
         _handler.CurrentWeapon.Attack();
+
     }
     private void Die()
     {
@@ -59,37 +85,31 @@ public class EnemyModel : MonoBehaviour, IPooleable
         //     var random = MyRandom.GetRandomWeight(_dropper.Align);
         //     GenericPool.Instance.SpawnFromPool(random, transform.position, Quaternion.identity);
         // }
-        RoundCounter.Instance.RemoveEnemy();
-        gameObject.SetActive(false);
+        view.Die();
+        _agent.speed = 0;
+        _controller.OnTakeDamage -= TakeDamage;
+        _controller.OnDie -= Die;
+
+        RoundCounterController.Instance.RemoveEnemy();
     }
 
     private void Move(float desiredSpeed)
     {
-        _view.OnMove(desiredSpeed);
-    }
-    public void OnObjectSpawn()
-    {
-        gameObject.SetActive(true);
-        if (RoundCounter.Instance.CurrentRound > 1)
+        _agent.speed = desiredSpeed;
+        if (desiredSpeed != 0)
         {
-            ModifyMaxHealth();
+            _agent.SetDestination(_controller.Target.transform.position);
         }
-        LifeController.Respawn();
+        view.OnMove(desiredSpeed);
     }
-
-    private void TakeDamage(float currentLife, float maxLife)
+    private void TakeDamage()
     {
         AddPoints();
-        _view.TakeDamage();
+        OnTakeDamage?.Invoke();
     }
-
     private void AddPoints()
     {
        // var instance = GenericPool.Instance.SpawnFromPool(pointDrop, transform.position, Quaternion.identity);
-        GameManager.Instance.PointCounter.AddPoints(stats.PointValue);
-    }
-    private void ModifyMaxHealth()
-    {
-        LifeController.AssignMaxLife(LifeController.MaxLife + stats.PerRoundLifeUpgrade);   
+        GameManager.Instance.PointCounter.AddPoints(_controller.Stats.PointValue);
     }
 }
