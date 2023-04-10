@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxLife>k__BackingField: 10
   <MaxSpeed>k__BackingField: 5
-  <PerRoundLifeUpgrade>k__BackingField: 1
-  <PointValue>k__BackingField: 10
+  <PerRoundLifeUpgrade>k__BackingField: 5
+  <PointValue>k__BackingField: 1000
   <DistanceToAttack>k__BackingField: 2.86

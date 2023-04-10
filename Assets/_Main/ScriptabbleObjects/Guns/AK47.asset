@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AK47
   m_EditorClassIdentifier: 
   AttackRate: 0.1
-  Damage: 5
+  Damage: 1
   Range: 5
   ContactLayers:
     serializedVersion: 2

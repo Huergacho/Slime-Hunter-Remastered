@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 646148957}
   - component: {fileID: 646148956}
   - component: {fileID: 646148955}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 2116685583}
   - component: {fileID: 2116685582}
   - component: {fileID: 2116685584}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 831921302}
   - component: {fileID: 831921303}
   - component: {fileID: 831921304}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: WeaponPickeable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 4885696348603873589}
   - component: {fileID: 4126376862428033215}
   - component: {fileID: 9140902554438951374}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}

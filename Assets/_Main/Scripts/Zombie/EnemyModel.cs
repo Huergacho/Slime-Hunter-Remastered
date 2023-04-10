@@ -39,10 +39,12 @@ public class EnemyModel : MonoBehaviour
     private void Start()
     {
         view?.AssignProperties(this);
+        
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
         _handler.Initialize(attackPoint);
-        
+        view.PlayRespawnParticles();
+
     }
 
     public void SuscribeEvents(EnemyController controller)
@@ -57,6 +59,7 @@ public class EnemyModel : MonoBehaviour
 
     private void Respawn()
     {
+        view.PlayRespawnParticles();
         _controller.OnTakeDamage += TakeDamage;
         _controller.OnDie += Die;
 
@@ -107,6 +110,8 @@ public class EnemyModel : MonoBehaviour
         AddPoints();
         OnTakeDamage?.Invoke();
     }
+
+
     private void AddPoints()
     {
        // var instance = GenericPool.Instance.SpawnFromPool(pointDrop, transform.position, Quaternion.identity);

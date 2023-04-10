@@ -9,7 +9,7 @@ public class EnemyView : MonoBehaviour
 {
     private Animator _animator;
     private Weapon _currWeapon;
-
+    [SerializeField] private ParticleSystem respawnParticles;
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
@@ -66,6 +66,10 @@ public class EnemyView : MonoBehaviour
         transform.parent.gameObject.SetActive(false);
     }
 
+    public void PlayRespawnParticles()
+    {
+        respawnParticles.Play();
+    }
     public void Die()
     {
         _animator.Play("Z_death_A");

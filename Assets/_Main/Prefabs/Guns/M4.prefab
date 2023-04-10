@@ -4992,6 +4992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531d2058b45f4fbe861a6a41278cc887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: a3284e34049ff32429344dedcb86bb4f, type: 2}
   attackPoint: {fileID: 1380516355855165887}
   baseStats: {fileID: 11400000, guid: a3284e34049ff32429344dedcb86bb4f, type: 2}
   Source: {fileID: 5764279204492924290}

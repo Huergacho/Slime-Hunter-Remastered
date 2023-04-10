@@ -35,6 +35,10 @@ namespace _Main.Scripts.Player
         private void Update()
         {
             Rotate();
+            if (_inputs.IsPicking)
+            {
+                PickUp();
+            }
             _fsm.UpdateState();
         }
         private void Rotate()

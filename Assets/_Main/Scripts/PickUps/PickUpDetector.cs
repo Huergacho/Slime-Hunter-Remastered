@@ -10,19 +10,31 @@ namespace _Main.Scripts.PickUps
 
         private void OnTriggerEnter(Collider col)
         {
+            var data = col.gameObject.GetComponent<IInteractable>();
+            if (data == null)
+            {
+                return;
+            }
             if (GameUtilities.IsGoInLayerMask(col.gameObject, stats.AutomaticPickUpLayer))
             {
-                var data = col.gameObject.GetComponent<IInteractable>();
-                data?.OnInteract(this);
+                data.OnInteract(this);
+                return;
             }
+
+
         }
         public void ManualPickUp()
         {
-            Collider2D data =  Physics2D.OverlapCircle(transform.position, stats.PickUpRadius,stats.ManualPickUpLayer);
+            Collider[] data =  Physics.OverlapSphere(transform.position, stats.PickUpRadius,stats.ManualPickUpLayer);
             if(data == null){return;}
-            
-            var dataPickUp = data.gameObject.GetComponent<IInteractable>();
-            dataPickUp?.OnInteract(this);
+
+            foreach (var item in data)
+            {
+                var dataPickUp = item.GetComponent<IInteractable>();
+                dataPickUp?.OnInteract(this);
+                break;
+            }
+
         }
 
         public void OnDrawGizmos()

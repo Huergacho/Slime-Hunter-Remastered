@@ -44,8 +44,8 @@ public class EnemyController : MonoBehaviour, IPooleable
     {
         
         SuscribeEvents(); 
+        LifeController.AssignMaxLife(stats.MaxLife);
         _enemyModel.SuscribeEvents(this);
-
         _targetModel = GameManager.Instance.Player.GetComponent<PlayerController>();
         InitDecisionTree();
         InitFsm();

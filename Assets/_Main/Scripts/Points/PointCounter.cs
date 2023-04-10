@@ -7,8 +7,10 @@ namespace _Main.Scripts.Hud.UI
     public class PointCounter : MonoBehaviour, IUI
     {
         private PointVisual _pointVisual;
-        private int _currentPoints;
+        [SerializeField]private int _currentPoints;
         public Action<int> OnUpdatePoints;
+        public Action<int> OnDeletePoints;
+        public Action<int> OnAddPoints;
 
         private void Awake()
         {
@@ -22,14 +24,28 @@ namespace _Main.Scripts.Hud.UI
         public void AddPoints(int quantity)
         {
             _currentPoints += quantity;
+            OnAddPoints?.Invoke(quantity);
             UpdateInfo();
         }
 
+        public bool CanDeletePoints(int quantity)
+        {
+            if (_currentPoints <= 0)
+            {
+                return false;
+            }
+
+            var data = _currentPoints - quantity;
+            return (data) >= 0;
+        }
         public void DeletePoints(int quantity)
         {
-            if (_currentPoints < quantity) { return;}
-            if((_currentPoints -= quantity)>= 0) {return;}
+            if (!CanDeletePoints(quantity))
+            {
+                return;
+            }
             _currentPoints -= quantity;
+            OnDeletePoints?.Invoke(quantity);
             UpdateInfo();
         }
         public void UpdateInfo()

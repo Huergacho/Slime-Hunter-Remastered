@@ -65,7 +65,6 @@ MeshRenderer:
   - {fileID: -4660651839558579860, guid: a5c9aada50f53334b9fdd90156d917c6, type: 3}
   - {fileID: -3963241562183589234, guid: a5c9aada50f53334b9fdd90156d917c6, type: 3}
   - {fileID: -8896051167825165466, guid: a5c9aada50f53334b9fdd90156d917c6, type: 3}
-  - {fileID: -8976064437032432714, guid: a5c9aada50f53334b9fdd90156d917c6, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4994,6 +4993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f72c1be9fae45b8b252de09123780aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: a4743a79ee6744344a0818a27335b11c, type: 2}
   attackPoint: {fileID: 8441554995714277739}
   baseStats: {fileID: 11400000, guid: a4743a79ee6744344a0818a27335b11c, type: 2}
   Source: {fileID: 8441554997148097641}
