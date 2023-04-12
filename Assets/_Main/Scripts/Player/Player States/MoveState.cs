@@ -1,4 +1,5 @@
 ﻿using System;
+using _Main.Scripts.Upgrades;
 using UnityEngine;
 
 namespace _Main.Scripts.Player.Player_States
@@ -10,10 +11,9 @@ namespace _Main.Scripts.Player.Player_States
         Action _onDash;
         Action<Vector3,float> _onRun;
         PlayerController _controller;
-        private float _desiredSpeed;
         Action _animation;
         private Action _onPickUp;
-        public MoveState(T idleInput, Action<Vector3, float> onRun, Action onShoot, Action onDash, Action onPickUp, PlayerController controller, float desiredSpeed, Action animation = null)
+        public MoveState(T idleInput, Action<Vector3, float> onRun, Action onShoot, Action onDash, Action onPickUp, PlayerController controller, Action animation = null)
         {
             _idleInput = idleInput;
             _onRun = onRun;
@@ -21,7 +21,6 @@ namespace _Main.Scripts.Player.Player_States
             _onDash = onDash;
             _onPickUp = onPickUp;
             _controller = controller;
-            _desiredSpeed = desiredSpeed;
             _animation = animation;
         }
         public override void Execute()
@@ -54,7 +53,7 @@ namespace _Main.Scripts.Player.Player_States
             {
                 _onPickUp?.Invoke();
             }
-            _onRun?.Invoke(new Vector3(_controller.Inputs.MovementAxis.x,0,_controller.Inputs.MovementAxis.z), _desiredSpeed);
+            _onRun?.Invoke(new Vector3(_controller.Inputs.MovementAxis.x,0,_controller.Inputs.MovementAxis.z),_controller.Model.Stats.GetStat(GlobalStats.MoveSpeed));
             _animation?.Invoke();
         }
     }

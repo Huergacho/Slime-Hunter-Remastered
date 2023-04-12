@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Threading.Tasks;
 using _Main.Scripts.Gun;
+using _Main.Scripts.Upgrades;
 using Assets._Main.Scripts.Characters.ScriptableObjects.Actor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,10 +16,12 @@ namespace Assets._Main.Scripts.Characters.Player
     {
 
         [SerializeField] private Transform weaponAnchor;
-        [SerializeField] private PlayerStatsSO stats;
+     //   [SerializeField] private PlayerStatsSO stats;
         [SerializeField] private Transform mouseIndicator;
         [SerializeField] private bool isometricMovement;
         [SerializeField] private LayerMask layersToLook;
+
+        [SerializeField]private Stats _stats;
         #region Components
         private WeaponHandler _handler;
         private Camera _camera;
@@ -28,7 +31,9 @@ namespace Assets._Main.Scripts.Characters.Player
         #endregion
         #region Public Fields
         public LifeController LifeController => _lifeController;
-        public PlayerStatsSO Stats => stats;
+        //public PlayerStatsSO Stats => stats;
+        public Stats Stats => _stats;
+
         #endregion
 
         // private Dash _dash;
@@ -48,7 +53,7 @@ namespace Assets._Main.Scripts.Characters.Player
         private void Start()
         {
             _handler.OnWeaponChange += EquipWeapon;
-            _lifeController.AssignMaxLife(stats.MaxLife);
+            _lifeController.AssignMaxLife(_stats.GetStat(GlobalStats.Health));
             _view.AssignProperties(this);
             SuscribeEvents();
         }
@@ -62,7 +67,7 @@ namespace Assets._Main.Scripts.Characters.Player
         public void Move(Vector3 dir, float desiredSpeed)
         {
 
-            if (_rb.velocity.magnitude > stats.MaxSpeed || desiredSpeed == 0)
+            if (_rb.velocity.magnitude > _stats.GetStat(GlobalStats.MoveSpeed)|| desiredSpeed == 0)
             {
                 return;
             }

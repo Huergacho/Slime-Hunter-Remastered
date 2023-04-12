@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using _Main.Scripts.Upgrades;
+using UnityEngine;
 
 namespace Assets._Main.Scripts.Characters.ScriptableObjects.Actor
 {
@@ -8,5 +10,7 @@ namespace Assets._Main.Scripts.Characters.ScriptableObjects.Actor
         [field:SerializeField]public float DashTime { get; private set; }
         [field:SerializeField]public float DashSpeed { get; private set; }
         [field:SerializeField]public float DashCooldown{ get; private set; }
+        
+        
     }
 }

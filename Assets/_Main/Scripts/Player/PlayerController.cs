@@ -1,5 +1,6 @@
 ﻿using _Main.Scripts.PickUps;
 using _Main.Scripts.Player.Player_States;
+using _Main.Scripts.Upgrades;
 using Assets._Main.Scripts.Characters.Player;
 using Assets._Main.Scripts.Characters.Player.Player_States;
 using States;
@@ -67,7 +68,7 @@ namespace _Main.Scripts.Player
         public void InitFsm()
         {
             var idle = new IdleState<PlayerStates>(PlayerStates.Move, MoveCommand, ShootCommand, PickUp, this);
-            var move = new MoveState<PlayerStates>(PlayerStates.Idle, MoveCommand, ShootCommand,DashCommand,PickUp, this,_model.Stats.MaxSpeed);
+            var move = new MoveState<PlayerStates>(PlayerStates.Idle, MoveCommand, ShootCommand,DashCommand,PickUp, this);
         
             idle.AddTransition(PlayerStates.Move,move);
         
