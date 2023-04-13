@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using _Main.Scripts.Tools;
 using Assets._Main.Thecnical.Scripts.Interactables.Buy_Items;
-using UnityEditor.AI;
 using UnityEngine;
 using UnityEngine.AI;
 using NavMeshBuilder = UnityEngine.AI.NavMeshBuilder;

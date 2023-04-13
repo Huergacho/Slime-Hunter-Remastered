@@ -20,10 +20,7 @@ namespace _Main.Scripts.Upgrades
         #region Dictionaries
 
                 private Dictionary<GlobalStats, float> _statsValues = new Dictionary<GlobalStats, float>();
-
-#if UNITY_EDITOR
-        [ContextMenu("UpdateDictionary")]
-
+                
         public void SetUpDictionaries()
         {
             foreach (var item in statsInfo)
@@ -32,7 +29,6 @@ namespace _Main.Scripts.Upgrades
             }
             Debug.Log("Diccionario Seteado Para" + name);
         }
-#endif
         public float GetStat(GlobalStats stat)
         {
             if(_statsValues.TryGetValue(stat,out float value))
