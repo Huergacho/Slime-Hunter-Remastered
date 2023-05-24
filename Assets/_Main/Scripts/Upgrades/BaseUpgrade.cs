@@ -1,4 +1,5 @@
 ﻿using System;
+using _Main.Scripts.Upgrades;
 using MyEngine;
 using TMPro;
 using Unity.VisualScripting;
@@ -9,18 +10,14 @@ namespace Assets
 {
     public  class BaseUpgrade : MonoBehaviour
     {
-        [Header("Customizable")]
-        [SerializeField] protected int maxValue;
-        [SerializeField] protected int minValue;
-        [SerializeField, Multiline]protected string description;
-        [SerializeField]protected Sprite image;
+        [field:SerializeField] public BaseUpgradeSo Stats { get; private set; }
 
         [Header("Setted Values")]
         [SerializeField] protected Button button;
         [SerializeField]private Image reflectedImage;
 
-        [SerializeField]private TextMeshProUGUI descriptionText;
-        protected float currentValue;
+        [SerializeField]protected TextMeshProUGUI descriptionText;
+        protected float CurrentValue;
 
         private UpgradesMenu _controller;
         
@@ -28,37 +25,53 @@ namespace Assets
         [ContextMenu("Randomize Value")]
         private void RandomizeValueInEditor()
         {
-            var randomNumber = MyRandom.Range(minValue, maxValue);
-            currentValue = Mathf.RoundToInt(randomNumber);
+            var randomNumber = MyRandom.Range(Stats.MinValue,Stats.MaxValue);
+            CurrentValue = Mathf.RoundToInt(randomNumber);
         }
         #endif
         protected virtual void Start()
         {
             button.onClick.AddListener(UpgradeStat);
+            Initialize();
+        }
+
+        void Initialize()
+        {
+            RandomStat();
             SetVisuals();
         }
-
         protected virtual void SetVisuals()
         {
-            reflectedImage.sprite = image;
-            descriptionText.text = description;
+            reflectedImage.sprite = Stats.Image;
+            descriptionText.text = Stats.Description + " " + $"<color=yellow>{Mathf.Round(CurrentValue)}</color>";
+
         }
 
+        protected void UpdateVisuals()
+        {
+            descriptionText.text = Stats.Description + " " + $"<color=yellow>{Mathf.Round(CurrentValue)}</color>";
+        }
         public void SetController(UpgradesMenu controller)
         {
             _controller = controller;
-        }
-        public virtual void UpgradeStat()
+        } 
+        protected void UpgradeStat()
         {
-            print("Mejoramos");
+            RandomStat();
+            UpdateVisuals();
+            ActionToDo();
             _controller.SelectedUpdate();
 
         }
-        protected float RandomStat()
+
+        protected virtual void ActionToDo()
         {
-            var randomNumber = MyRandom.Range(minValue, maxValue);
-            currentValue = Mathf.RoundToInt(randomNumber);
-            return currentValue;
+            
+        }
+        private void RandomStat()
+        {
+            CurrentValue = MyRandom.Range(Stats.MinValue, Stats.MaxValue);
+            CurrentValue = Mathf.RoundToInt(CurrentValue);
         }
     }
 }

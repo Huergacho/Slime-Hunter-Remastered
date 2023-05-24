@@ -46,7 +46,7 @@ namespace _Main.Scripts.Upgrades
         {
             if(_statsValues.TryGetValue(stat,out float value))
             {
-                _statsValues[stat] -= amount;
+                _statsValues[stat] += amount;
             }
             else
             {

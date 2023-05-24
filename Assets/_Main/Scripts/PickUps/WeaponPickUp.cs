@@ -1,36 +1,33 @@
 ﻿using System;
 using System.Collections;
 using _Main.Scripts.Gun;
+using _Main.Scripts.Objects;
 using UnityEngine;
 
 namespace _Main.Scripts.PickUps
 {
+    [RequireComponent(typeof(ObjectDisguiser))]
     public class WeaponPickUp : Pickeable
     {
         [SerializeField] private GameObject prefabToInstance;
         private MonoBehaviour _model;
-        private MeshFilter _filter;
+        private ObjectDisguiser _disguiser;
         protected override void Awake()
         {
-            _filter = GetComponent<MeshFilter>();
+            base.Awake();
+            _disguiser = GetComponent<ObjectDisguiser>();
         }
 
         protected override void Start()
         {
-
-            if (_filter != null)
-            {
-                _filter.mesh= prefabToInstance.GetComponentInChildren<MeshFilter>().sharedMesh;
-            }
+            _disguiser.ChangeSkin(prefabToInstance.GetComponent<ObjectDisguiser>());
             base.Start();
 
         }
-        
-
         public void ChangePrefab(GameObject newPrefab)
         {
             prefabToInstance = newPrefab;
-            _filter.mesh= prefabToInstance.GetComponentInChildren<MeshFilter>().sharedMesh;
+            _disguiser.ChangeSkin(prefabToInstance.GetComponent<ObjectDisguiser>());
         }
         
         protected override void ActionsOnPickUp()

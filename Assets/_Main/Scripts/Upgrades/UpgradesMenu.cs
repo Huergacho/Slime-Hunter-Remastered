@@ -15,15 +15,10 @@ namespace Assets
             {
                 upgrades[i].SetController(this);
             }
-            RoundCounterController.Instance.OnUpdateRound += OnShowMenu;
         }
 
-        private void OnShowMenu(int a)
+        public void OnShowMenu()
         {
-            if (a <= 1)
-            {
-                return;
-            }
             GameManager.Instance.PauseGame(false);
             visuals.SetActive(true);
             for (int i = 0; i < upgrades.Length; i++)

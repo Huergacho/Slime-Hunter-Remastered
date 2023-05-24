@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.04, y: 3.0487}
+  m_AnchoredPosition: {x: -0.040008545, y: 3.048706}
   m_SizeDelta: {x: 1.8056, y: 0.5227}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6657701837546997876
@@ -194,3 +194,4 @@ MonoBehaviour:
   imageToFill: {fileID: 6657701838273850499}
   isPermanent: 1
   isProgressive: 0
+  owner: {fileID: 0}

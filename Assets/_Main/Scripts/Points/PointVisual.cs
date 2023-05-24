@@ -40,5 +40,6 @@ namespace _Main.Scripts.Hud.UI
             _animator?.Play("Add Points");
             auxiliarText.text = "+"+quantity;
         }
+        
     }
 }

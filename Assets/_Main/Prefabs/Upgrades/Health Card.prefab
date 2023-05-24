@@ -50,10 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b07ad366364b4fa312ca8935c1f4f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxValue: 1
-  minValue: 10
-  description: Increase PS by
-  image: {fileID: 21300000, guid: 19e5ba7d75c4f2e4e8d2151606339bf3, type: 3}
+  <Stats>k__BackingField: {fileID: 11400000, guid: b10e8013c6636e04d9a3e5ceb59b8f8e,
+    type: 2}
   button: {fileID: 1935236306042337115}
   reflectedImage: {fileID: 1935236306076573268}
   descriptionText: {fileID: 1935236306811457573}

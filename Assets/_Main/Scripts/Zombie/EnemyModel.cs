@@ -19,6 +19,7 @@ public class EnemyModel : MonoBehaviour
     // [SerializeField] private Dropper dropper;
     private EnemyController _controller;
     private NavMeshAgent _agent;
+    private Collider _collider;
 
     #region Events
 
@@ -31,6 +32,7 @@ public class EnemyModel : MonoBehaviour
     #endregion
     private void Awake()
     {
+        _collider = GetComponent<Collider>();
         _handler = GetComponent<WeaponHandler>();
         _agent = GetComponent<NavMeshAgent>();
 
@@ -59,6 +61,7 @@ public class EnemyModel : MonoBehaviour
 
     private void Respawn()
     {
+        _collider.enabled = true;
         view.PlayRespawnParticles();
         _controller.OnTakeDamage += TakeDamage;
         _controller.OnDie += Die;
@@ -88,6 +91,7 @@ public class EnemyModel : MonoBehaviour
         //     var random = MyRandom.GetRandomWeight(_dropper.Align);
         //     GenericPool.Instance.SpawnFromPool(random, transform.position, Quaternion.identity);
         // }
+        _collider.enabled = false;
         view.Die();
         _agent.speed = 0;
         _controller.OnTakeDamage -= TakeDamage;

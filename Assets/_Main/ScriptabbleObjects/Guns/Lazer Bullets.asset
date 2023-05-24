@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2569ab4ae0514895ba2ec769077be287, type: 3}
   m_Name: Lazer Bullets
   m_EditorClassIdentifier: 
-  <PoolSize>k__BackingField: 15
+  <PoolSize>k__BackingField: 30
   <ObjectToPool>k__BackingField: {fileID: 8565304779907332713, guid: 4ea67f3159022b44d926260100ef670e,
     type: 3}

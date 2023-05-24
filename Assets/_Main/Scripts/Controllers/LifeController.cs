@@ -15,6 +15,7 @@ public class LifeController : MonoBehaviour
     {
         _maxLife = data;
         _currentLife = _maxLife;
+        OnModifyHealth?.Invoke(_currentLife,_maxLife);
     }
     public void TakeDamage(int damage)
     {

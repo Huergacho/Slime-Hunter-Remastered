@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e92f69f6c44d28872914c131fdefce, type: 3}
   m_Name: Lazer Auto
   m_EditorClassIdentifier: 
-  AttackRate: 0.03
+  AttackRate: 0.05
   Damage: 10
   Range: 5
   ContactLayers:

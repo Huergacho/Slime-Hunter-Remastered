@@ -15,5 +15,5 @@ MonoBehaviour:
   <MaxLife>k__BackingField: 10
   <MaxSpeed>k__BackingField: 5
   <PerRoundLifeUpgrade>k__BackingField: 5
-  <PointValue>k__BackingField: 1000
+  <PointValue>k__BackingField: 10
   <DistanceToAttack>k__BackingField: 2.86

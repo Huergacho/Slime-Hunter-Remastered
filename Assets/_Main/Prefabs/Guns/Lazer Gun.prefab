@@ -4940,9 +4940,9 @@ GameObject:
   - component: {fileID: 8441554997148097636}
   - component: {fileID: 8441554997148097637}
   - component: {fileID: 8441554997148097638}
-  - component: {fileID: 8441554997148097639}
   - component: {fileID: 8441554997148097640}
   - component: {fileID: 8441554997148097641}
+  - component: {fileID: 5522937935249333720}
   m_Layer: 0
   m_Name: Lazer Gun
   m_TagString: Untagged
@@ -4998,19 +4998,6 @@ MonoBehaviour:
   baseStats: {fileID: 11400000, guid: a4743a79ee6744344a0818a27335b11c, type: 2}
   Source: {fileID: 8441554997148097641}
   shootParticles: {fileID: 5925108008199020200}
---- !u!65 &8441554997148097639
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8441554997148097642}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8441554997148097640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5079,3 +5066,18 @@ MonoBehaviour:
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
   m_DefaultVelocity: {x: 0, y: -1, z: 0}
+--- !u!114 &5522937935249333720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441554997148097642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a2b9ebe1654992910aa50fc130cace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filter: {fileID: 4340697056407562570}
+  _renderer: {fileID: 2006837077237390720}
+  outline: {fileID: 0}

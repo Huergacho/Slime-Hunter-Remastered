@@ -16,6 +16,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f1212ad1dec44ce7b7147976b91869c3157800/4d/2e53ff8f/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f1212ad1dec44ce7b7147976b91869c3157800/4f/121b4b2d/ScriptableObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f1212ad1dec44ce7b7147976b91869c3157800/92/c455cae0/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f1212ad1dec44ce7b7147976b91869c3157800/da/659c28cd/UnityEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f1212ad1dec44ce7b7147976b91869c3157800/e3/84d08a51/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Main/Scripts/Interactables/Buy Items/BuyItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Main/Scripts/Objects/MysteryBox.cs" root0="FORCE_HIGHLIGHTING" />
@@ -42,6 +43,14 @@
   }
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Build/Slime Hunter.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="D:\Proyectos de Unity\Individual Proyects\Slime-Hunter-Remastered\Build" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="D:\Program Files\Unity\Hub\Editor\2021.3.4f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;D:\Proyectos de Unity\Individual Proyects\Slime-Hunter-Remastered&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
@@ -96,7 +105,13 @@
       <workItem from="1680960696754" duration="3565000" />
       <workItem from="1681219053609" duration="3784000" />
       <workItem from="1681301996212" duration="9435000" />
-      <workItem from="1681391364057" duration="3349000" />
+      <workItem from="1681391364057" duration="4143000" />
+      <workItem from="1681475705118" duration="1227000" />
+      <workItem from="1681563269012" duration="4060000" />
+      <workItem from="1681742500408" duration="3237000" />
+      <workItem from="1681760124902" duration="4807000" />
+      <workItem from="1681786055056" duration="793000" />
+      <workItem from="1682468523731" duration="729000" />
     </task>
     <servers />
   </component>

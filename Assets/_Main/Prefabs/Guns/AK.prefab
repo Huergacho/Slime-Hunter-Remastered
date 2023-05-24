@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1384232393564369627}
   - component: {fileID: 2598578609423395165}
   - component: {fileID: 5756595577942102074}
+  - component: {fileID: 6650093864382949672}
   m_Layer: 0
   m_Name: AK
   m_TagString: Untagged
@@ -154,6 +155,21 @@ MonoBehaviour:
     m_DissipationDistance: 13
     m_PropagationSpeed: 343
   m_DefaultVelocity: {x: 0, y: -1, z: 0}
+--- !u!114 &6650093864382949672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384232393564369621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a2b9ebe1654992910aa50fc130cace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filter: {fileID: 5862205823266164583}
+  _renderer: {fileID: 5870942014774573957}
+  outline: {fileID: 0}
 --- !u!1 &1384232394998361094
 GameObject:
   m_ObjectHideFlags: 0
