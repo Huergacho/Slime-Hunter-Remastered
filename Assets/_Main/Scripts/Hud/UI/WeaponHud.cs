@@ -15,8 +15,7 @@ namespace _Main.Scripts.Hud.UI
         private bool canUpdate;
         private void Start()
         {
-            currentHandler.OnWeaponChange += UpdateCurrentGun;
-            CheckForRangedWeapon(currWeaponToCheck);
+            currentHandler.OnWeaponChange += CheckForRangedWeapon;
         }
 
         private void Update()
@@ -60,10 +59,6 @@ namespace _Main.Scripts.Hud.UI
 
             canUpdate = false;
             SetAmmoTextToMeele();
-        }
-        public void UpdateCurrentGun(Weapon currWeapon)
-        {
-            CheckForRangedWeapon(currWeapon);
         }
     }
 }

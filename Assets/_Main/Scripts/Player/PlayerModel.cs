@@ -20,7 +20,7 @@ namespace Assets._Main.Scripts.Characters.Player
         [SerializeField] private Transform mouseIndicator;
         [SerializeField] private bool isometricMovement;
         [SerializeField] private LayerMask layersToLook;
-
+        [SerializeField] private Weapon startWeapon;
         [SerializeField]private Stats _stats;
         #region Components
         private WeaponHandler _handler;
@@ -46,20 +46,20 @@ namespace Assets._Main.Scripts.Characters.Player
             _lifeController = GetComponent<LifeController>();
             _handler = GetComponent<WeaponHandler>();
             _rb = GetComponent<Rigidbody>();
-            _handler.Initialize(weaponAnchor);
             _camera = Camera.main;
             _view = GetComponent<PlayerView>();
         }
         private void Start()
         {
-            _handler.OnWeaponChange += EquipWeapon;
             _lifeController.AssignMaxLife(_stats.GetStat(GlobalStats.Health));
             _view.AssignProperties(this);
             SuscribeEvents();
+            _handler.Initialize(weaponAnchor); 
         }
         #endregion
         private void SuscribeEvents()
         {
+            _handler.OnWeaponChange += EquipWeapon;
             _lifeController.OnModifyHealth += ModifyHealth;
             _lifeController.OnDie += DieActions;
         }

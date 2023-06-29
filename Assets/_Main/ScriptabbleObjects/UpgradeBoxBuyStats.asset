@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91c540d0d7347669e7f4f3b04b88428, type: 3}
   m_Name: UpgradeBoxBuyStats
   m_EditorClassIdentifier: 
-  <ItemValue>k__BackingField: 30
+  <ItemValue>k__BackingField: 500
   <ContactLayers>k__BackingField:
     serializedVersion: 2
     m_Bits: 256

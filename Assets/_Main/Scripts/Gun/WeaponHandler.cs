@@ -23,6 +23,7 @@ namespace _Main.Scripts.Gun
             {
                 return;
             }
+            holdedWeapon = currentWeapon;
             currentWeapon.transform.SetParent(_anchorPoint);
             currentWeapon.transform.SetPositionAndRotation(_anchorPoint.position,_anchorPoint.rotation);
         }

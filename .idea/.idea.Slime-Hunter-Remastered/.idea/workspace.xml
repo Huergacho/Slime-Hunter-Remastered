@@ -18,6 +18,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f1212ad1dec44ce7b7147976b91869c3157800/92/c455cae0/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f1212ad1dec44ce7b7147976b91869c3157800/da/659c28cd/UnityEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f1212ad1dec44ce7b7147976b91869c3157800/e3/84d08a51/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Main/Scripts/Controllers/MenuManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Main/Scripts/Interactables/Buy Items/BuyItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Main/Scripts/Objects/MysteryBox.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Main/Scripts/Skills/Dash/Dash.cs" root0="FORCE_HIGHLIGHTING" />
@@ -112,6 +113,8 @@
       <workItem from="1681760124902" duration="4807000" />
       <workItem from="1681786055056" duration="793000" />
       <workItem from="1682468523731" duration="729000" />
+      <workItem from="1687783685010" duration="7048000" />
+      <workItem from="1687997431549" duration="341000" />
     </task>
     <servers />
   </component>

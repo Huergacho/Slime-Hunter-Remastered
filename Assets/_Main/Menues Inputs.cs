@@ -41,7 +41,7 @@ public partial class @MenuesInputs : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7b1ca493-ceec-41b2-882f-2b4fc44a93e8"",
-                    ""path"": ""<Keyboard>/p"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",
