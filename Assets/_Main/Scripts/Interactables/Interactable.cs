@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets._Main.Scripts.Sounds;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Assets._Main.Thecnical.Scripts.Interactables

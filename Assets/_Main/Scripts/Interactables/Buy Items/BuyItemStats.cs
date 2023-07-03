@@ -1,3 +1,4 @@
+using Assets._Main.Scripts.Sounds;
 using UnityEngine;
 
 namespace _Main.Scripts.Interactables.Buy_Items
@@ -7,5 +8,8 @@ namespace _Main.Scripts.Interactables.Buy_Items
     {
         [field:SerializeField] public int ItemValue { get; private set; }
         [field:SerializeField] public LayerMask ContactLayers { get; private set;}
+        [field:SerializeField]public AudioClip BuySound { get; set; }
+        [field:SerializeField]public AudioClip NoMoneySound { get; set; }
+
     }
 }

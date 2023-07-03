@@ -32,6 +32,7 @@ public class AudioController : MonoBehaviour
         foreach (var audio in audioDictionary)
         {
             LoadValues(audio.Key);
+            audio.Value.slider.value = audio.Value.Source.volume;
         }
     }
 

@@ -64,6 +64,7 @@ MonoBehaviour:
         m_CallState: 2
   _stats: {fileID: 11400000, guid: 337506503daca87439b52f192eecbf55, type: 2}
   Outline: {fileID: 8951049990889428289}
+  costText: {fileID: 2911384069910518746}
   interactInterval: 0.5
 --- !u!135 &8951049990239092136
 SphereCollider:
@@ -514,6 +515,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c21763da1b0ba654da2502eb6fadcc3c, type: 3}
+--- !u!114 &2911384069910518746 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8643146920380493508, guid: c21763da1b0ba654da2502eb6fadcc3c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6887675320950142238}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5423449186792681074 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1501394650007444332, guid: c21763da1b0ba654da2502eb6fadcc3c,

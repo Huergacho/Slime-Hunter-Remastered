@@ -68,7 +68,6 @@ public class EnemyView : MonoBehaviour
 
     public void PlayRespawnParticles()
     {
-        respawnParticles.Play();
     }
     public void Die()
     {

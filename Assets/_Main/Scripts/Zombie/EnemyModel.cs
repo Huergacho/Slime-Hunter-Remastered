@@ -15,6 +15,8 @@ public class EnemyModel : MonoBehaviour
 {
     [SerializeField]private Transform attackPoint;
     [SerializeField]private EnemyView view;
+    [SerializeField] private AudioClip takeDamageSound;
+
     // [SerializeField] private PoolObject pointDrop;
     // [SerializeField] private Dropper dropper;
     private EnemyController _controller;
@@ -112,6 +114,9 @@ public class EnemyModel : MonoBehaviour
     private void TakeDamage()
     {
         AddPoints();
+        
+        GameManager.Instance.AudioManager.ReproduceOnce(AudioEnum.SFX,takeDamageSound);
+
         OnTakeDamage?.Invoke();
     }
 

@@ -427,7 +427,8 @@ MonoBehaviour:
         m_CallState: 2
   stats: {fileID: 11400000, guid: 55929eeb690925b4aa6afeab7ae89b3d, type: 2}
   timer: {fileID: 2116685584}
-  <Sound>k__BackingField: {fileID: 0}
+  <Sound>k__BackingField: {fileID: 8300000, guid: 0f8db203bd96e064880575dbb765ce25,
+    type: 3}
   prefabToInstance: {fileID: 8441554997148097642, guid: 2209f08cd5bec7c4180cc0b7ac7bd46d,
     type: 3}
 --- !u!65 &831921302

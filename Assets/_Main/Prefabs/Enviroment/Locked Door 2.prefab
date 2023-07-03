@@ -85,6 +85,7 @@ MonoBehaviour:
       m_Calls: []
   _stats: {fileID: 11400000, guid: f50a8bbb339e1c64eb5b5d8dbd57aff8, type: 2}
   Outline: {fileID: 5927906843757177771}
+  costText: {fileID: 1350938453686794305}
 --- !u!65 &2347839087053281669
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -604,6 +605,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c21763da1b0ba654da2502eb6fadcc3c, type: 3}
+--- !u!114 &1350938453686794305 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8643146920380493508, guid: c21763da1b0ba654da2502eb6fadcc3c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7299735801315776133}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8186375838354984425 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1501394650007444332, guid: c21763da1b0ba654da2502eb6fadcc3c,

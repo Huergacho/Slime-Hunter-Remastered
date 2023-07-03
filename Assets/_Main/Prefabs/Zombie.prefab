@@ -236,6 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 1045685817131084345}
   view: {fileID: 4001262038309260946}
+  takeDamageSound: {fileID: 0}
 --- !u!114 &1045685817131185745
 MonoBehaviour:
   m_ObjectHideFlags: 0

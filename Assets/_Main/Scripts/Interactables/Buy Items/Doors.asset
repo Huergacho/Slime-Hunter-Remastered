@@ -16,3 +16,7 @@ MonoBehaviour:
   <ContactLayers>k__BackingField:
     serializedVersion: 2
     m_Bits: 256
+  <BuySound>k__BackingField: {fileID: 8300000, guid: 3aeaafc7917992b4fbaa3b9bce8497f8,
+    type: 3}
+  <NoMoneySound>k__BackingField: {fileID: 8300000, guid: bdd502ee49194304787484147751b484,
+    type: 3}
