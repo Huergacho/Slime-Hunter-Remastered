@@ -40,7 +40,7 @@ namespace _Main.Scripts.Gun
         protected virtual void MakeSound()
         {
             if(Sound != null)
-                GameManager.Instance.AudioManager.ReproduceOnce(Sound);
+                GameManager.Instance.AudioManager.ReproduceOnce(AudioEnum.Shoots,Sound);
         }
         public virtual void ResetShoot()
         {

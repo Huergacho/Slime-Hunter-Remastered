@@ -69,7 +69,7 @@ Material:
     - _ZWriteControl: 0
     m_Colors:
     - _Player_Position: {r: 0, g: 0, b: 0, a: 0}
-    - _Position: {r: 0.46866238, g: 0.34703213, b: 12.5390005, a: 0}
+    - _Position: {r: 0.50640255, g: 0.35341027, b: 12.479162, a: 0}
     - _Vel: {r: 3, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5354003049231137335

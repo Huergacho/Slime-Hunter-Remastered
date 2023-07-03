@@ -68,7 +68,7 @@ namespace Assets._Main.Scripts.Skills
         {
             if (Sound != null)
             {
-                GameManager.Instance.AudioManager.ReproduceOnce(Sound);
+                GameManager.Instance.AudioManager.ReproduceOnce(AudioEnum.SFX,Sound);
             }
 
             _habilityUsed = false;

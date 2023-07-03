@@ -5,12 +5,12 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
-[RequireComponent(typeof(AudioManager))]
+[RequireComponent(typeof(AudioController))]
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     [field: SerializeField]public GameObject Player { get; private set;}
-    [field: SerializeField] public AudioManager AudioManager { get; private set; }
+    [field: SerializeField] public AudioController AudioManager { get; private set; }
     public bool IsPaused { get; private set;}
     public event Action<bool> OnPaused;
     private GameInputs _inputs;
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
         IsPaused = false;
-        AudioManager = GetComponent<AudioManager>();
+        AudioManager = GetComponent<AudioController>();
     }
     public void SetPlayer(GameObject player)
     {

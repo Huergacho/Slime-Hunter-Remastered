@@ -127,7 +127,7 @@ namespace _Main.Scripts.Gun
 
         public void NoAmmoSound()
         {
-            GameManager.Instance.AudioManager.ReproduceOnce(baseStats.noAmmoSound);
+            GameManager.Instance.AudioManager.ReproduceOnce(AudioEnum.Shoots,baseStats.noAmmoSound);
         }
     }
 }

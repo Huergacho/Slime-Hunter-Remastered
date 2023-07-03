@@ -66,7 +66,7 @@ public class MysteryBox : MonoBehaviour, ISound, ISpawner
     {
         var pickUpInstance = Instantiate(pickUpPrefab, weaponPickUpPos.position, Quaternion.identity);
         pickUpInstance.ChangePrefab(give.gameObject);
-        GameManager.Instance.AudioManager.ReproduceOnce(Sound);
+        GameManager.Instance.AudioManager.ReproduceOnce(AudioEnum.SFX,Sound);
     }
 
     public void OpenMysteryBox()

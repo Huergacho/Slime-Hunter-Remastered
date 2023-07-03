@@ -46,7 +46,7 @@ namespace _Main.Scripts.PickUps
             }
             weaponToChange.SetOwner(handler.gameObject);
             handler.ChangeWeapon(weaponToChange);
-            GameManager.Instance.AudioManager.ReproduceOnce(Sound);
+            GameManager.Instance.AudioManager.ReproduceOnce(AudioEnum.SFX,Sound);
             base.ActionsOnPickUp();
         }
         protected override void DisappearAction()

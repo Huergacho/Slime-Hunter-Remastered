@@ -16,6 +16,10 @@ namespace _Main.Scripts.Hud.UI
         private void Start()
         {
             currentHandler.OnWeaponChange += CheckForRangedWeapon;
+            if (currentHandler.CurrentWeapon != null)
+            {
+                CheckForRangedWeapon(currentHandler.CurrentWeapon);
+            }
         }
 
         private void Update()

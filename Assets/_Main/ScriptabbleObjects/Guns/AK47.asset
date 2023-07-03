@@ -18,10 +18,12 @@ MonoBehaviour:
   ContactLayers:
     serializedVersion: 2
     m_Bits: 5632
-  <Sound>k__BackingField: {fileID: 0}
+  <Sound>k__BackingField: {fileID: 8300000, guid: 4ea3719468763b94cb8978dc2b4b6495,
+    type: 3}
   bulletSpeed: 30
   bulletToSpawn: {fileID: 11400000, guid: cc8f8709973c1bf4aa7b311b37a534fb, type: 2}
   maxAmmo: 30
   maxAmmoInChamber: 60
   ammoCharges: 2
-  <noAmmoSound>k__BackingField: {fileID: 0}
+  <noAmmoSound>k__BackingField: {fileID: 8300000, guid: b570b0a2c1568674ab83a15bc3a6a564,
+    type: 3}
